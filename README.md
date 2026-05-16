@@ -1,5 +1,5 @@
 # KXphoto
-這是一個個人攝影作品集網站，使用 HTML、CSS 與 JavaScript 建立，並透過 GitHub Pages 部署。  
+這是一個個人攝影作品集網站，使用 HTML、CSS、JavaScript、jQuery建立，並透過 GitHub Pages 部署。  
 網站設計以簡潔、響應式排版為主，展示台灣風景與街拍作品。
 ## 功能特色
 - 響應式設計：支援桌機與行動裝置瀏覽  
