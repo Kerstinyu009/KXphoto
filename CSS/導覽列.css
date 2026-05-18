@@ -1,12 +1,32 @@
-.navlogo { 
-    width: 10%;
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #010713;
+    padding: 20px 50px;
+    height: 80px;
+    font-size: 25px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navlogo {
+    width: 12%;
+}
+
+h1 {
+    color: #E6EDF5;
+    
 }
 
 .navUL {
     list-style-type: none;
     text-align: center;
-    background-color: black;
-    color: white;
+    margin: 50px;
 }
 
 .navUL li {
@@ -15,11 +35,18 @@
 }
 
 .navUL li:hover {
-    background-color: rgba(23, 23, 192, 0.801);
+    background-color: #3877FF;
 }
 
 .navUL li a {
-    color: white;
+    color: #E6EDF5;
     text-align: center;
     text-decoration: none;
+}
+
+.top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: #3877FF;
 }
