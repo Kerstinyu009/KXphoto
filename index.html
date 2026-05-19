@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +9,46 @@
     <link rel="stylesheet" href="./CSS/導覽列.css">
     <style>
         body {
-            background-color:#121620;
+            background-color: #121620;
         }
     </style>
+    <script src="./JS/jQuery.js"></script>
+    <!-- 切換語言 -->
+    <script src="/path/to/cdn/jquery.slim.min.js"></script>
+    <script src="/path/to/index.js"></script>
+
+    <script>
+        // 預設語言
+        $.setLang({ lang: 'zh-Hant' });
+        // 使用者切換語言
+        $("#select").on("change", function () {
+            $.setLang({ lang: $(this).val() })
+        })
+    </script>
+
 </head>
+
 <body>
     <!-- 導覽列 -->
     <nav class="nav-container">
         <div class="nav-left">
-        <img class="navlogo" src="./img/logo.png" alt="LOGO" width="15%">
-        <h1>KXphoto</h1>
+            <img class="navlogo" src="./img/logo.png" alt="LOGO" width="15%">
+            <h1>KXphoto</h1>
         </div>
         <ul class="navUL">
             <li><a href="./index.html">首頁</a></li>
             <li><a href="./pages/about.html">關於</a></li>
             <li><a href="./pages/photo.html">圖片</a></li>
             <li><a href="./pages/lang.html">語言</a></li>
+            <li>
+                <select style="padding: 10px 30px;">
+                    <option value="">請選擇語言</option>
+                    <option value="zh-Hant">中文</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="th">แบบไทย</option>
+                </select>
+            </li>
         </ul>
         <a href="#" class="top">top</a>
     </nav>
@@ -50,4 +75,5 @@
     <br><br><br><br><br><br>
     <br><br><br><br><br><br>
 </body>
+
 </html>
