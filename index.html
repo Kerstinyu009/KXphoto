@@ -5,75 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KXphoto</title>
-    <link class="navIcon" rel="icon" href="./img/logo.png">
-    <link rel="stylesheet" href="./CSS/導覽列.css">
+    <!-- <link class="navIcon" rel="icon" href="#"> -->
+    <link rel="stylesheet" href="./CSS/navBar.css">
     <style>
         body {
-            background-color: #121620;
+            background-color: black;
         }
     </style>
-    <script src="./JS/jQuery.js"></script>
-    <!-- 切換語言 -->
-    <script src="/path/to/cdn/jquery.slim.min.js"></script>
-    <script src="/path/to/index.js"></script>
-
-    <script>
-        // 預設語言
-        $.setLang({ lang: 'zh-Hant' });
-        // 使用者切換語言
-        $("#select").on("change", function () {
-            $.setLang({ lang: $(this).val() })
-        })
-    </script>
 
 </head>
 
 <body>
+
     <!-- 導覽列 -->
-    <nav class="nav-container">
-        <div class="nav-left">
-            <img class="navlogo" src="./img/logo.png" alt="LOGO" width="15%">
-            <h1>KXphoto</h1>
+    <nav class="navContainer">
+        <div class="navLeft">
+            <a href="./index.html">
+                <img class="navlogo" src="./img/logo-3.png" alt="LOGO">
+            </a>
         </div>
-        <ul class="navUL">
+
+        <!-- 右側選單-->
+        <ul class="navUl">
             <li><a href="./index.html">首頁</a></li>
             <li><a href="./pages/about.html">關於</a></li>
-            <li><a href="./pages/photo.html">圖片</a></li>
-            <li><a href="./pages/lang.html">語言</a></li>
+
+            <!-- 下拉式導覽 -->
+            <li class="dropdown">
+                <a href="javascript:void(0)">圖片</a>
+                <div class="dropdownContent">
+                    <a href="./pages/natureimg.html">自然</a>
+                    <a href="./pages/peopleimg.html">人文</a>
+                    <a href="./pages/life.html">生活</a>
+                </div>
+            </li>
+
             <li>
-                <select style="padding: 10px 30px;">
+                <select class="lang-select">
                     <option value="">請選擇語言</option>
-                    <option value="zh-Hant">中文</option>
-                    <option value="en">English</option>
-                    <option value="ja">日本語</option>
-                    <option value="th">แบบไทย</option>
+                    <option value="./pages/lang.html">中文</option>
+                    <option value="./pages/lang.html">English</option>
+                    <option value="./pages/lang.html">日本語</option>
+                    <option value="./pages/lang.html">แบบไทย</option>
                 </select>
             </li>
         </ul>
-        <a href="#" class="top">top</a>
     </nav>
-    <!-- 以下 br 是測試用 -->
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
+
+    <!-- 回到頂部按鈕 -->
+    <a href="#" class="top">top</a>
+
+    <!-- 測試滾動用空間 -->
+    <div style="height: 2000px; padding: 20px;">
+        <h2>網頁內容區域</h2>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
 </body>
 
 </html>

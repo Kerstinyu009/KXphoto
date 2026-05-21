@@ -1,0 +1,101 @@
+/* 導覽列最外層容器 */
+.navContainer {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 5px solid rgba(5, 186, 218, 0.801);
+}
+
+/* 左側 Logo 區塊 */
+.navLeft {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.navlogo {
+    height: 100px;
+    width: auto;
+    display: block;
+
+}
+
+/* 右側選單列表 */
+.navUl {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+/* 連結樣式 */
+.navUl li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navUl li a:hover {
+    text-decoration: underline white;
+}
+
+/* 下拉選單 */
+.dropdown {
+    position: relative;
+}
+
+.dropdownContent {
+    display: none;
+    /* 預設隱藏 */
+    position: absolute;
+    top: 100%;
+    /* 剛好在父層 li 的下方 */
+    left: 0;
+    background-color: #3877FF;
+    width: max-content;
+    z-index: 10;
+}
+
+.dropdownContent a {
+    color: white !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdownContent a:hover {
+    background-color: #1A56DB;
+    border-bottom: 2px solid white;
+}
+
+.dropdown:hover .dropdownContent {
+    display: block;
+}
+
+/* 5. 語言選擇器樣式 */
+.lang-select {
+    padding: 6px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* 6. 回到頂部按鈕 */
+.top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: #3877FF;
+    font-size: 20px;
+    text-decoration: none;
+    z-index: 99;
+    border: 1px solid white;
+}
