@@ -54,14 +54,13 @@
 
 .dropdownContent {
     display: none;
-    /* 預設隱藏 */
     position: absolute;
     top: 100%;
-    /* 剛好在父層 li 的下方 */
     left: 0;
-    background-color: #3877FF;
+    background-color: #1a7fdd;
     width: max-content;
     z-index: 10;
+    
 }
 
 .dropdownContent a {
@@ -75,6 +74,7 @@
 .dropdownContent a:hover {
     background-color: #1A56DB;
     border-bottom: 2px solid white;
+    text-decoration: none;
 }
 
 .dropdown:hover .dropdownContent {
@@ -97,5 +97,8 @@
     font-size: 20px;
     text-decoration: none;
     z-index: 99;
-    border: 1px solid white;
+    border-radius: 25px;
+    background-color: white;
+    font-size: 25px;
+    padding: 5px;
 }

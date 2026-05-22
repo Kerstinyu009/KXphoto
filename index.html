@@ -5,11 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KXphoto</title>
-    <!-- <link class="navIcon" rel="icon" href="#"> -->
+    <link class="navIcon" rel="icon" href="./img/logo.png">
     <link rel="stylesheet" href="./CSS/navBar.css">
+
+    <!--  輪播圖  -->
+    <link rel="stylesheet" href="./JS/image-video-carousel-qc/css/qc.slider.css">
+    <script src="./JS/jQuery.js"></script>
+    <script src="./JS/image-video-carousel-qc/qcslider.jquery.js"></script>
+
     <style>
         body {
             background-color: black;
+        }
+        /* 輪播圖css */
+        :root {
+            opacity-slide: 0.5;
+            height-slider: 500px;
+            color-slider: rgba(5, 186, 218, 0.801);
+            height-responsive: 500px;
         }
     </style>
 
@@ -52,8 +65,42 @@
         </ul>
     </nav>
 
+    <!-- 輪播圖 -->
+    <section class="slide">
+        <div class="slider-container">
+            <ul class="slider-wrapper" id="slider">
+                <li class="slide-current">
+                    <!-- Image -->
+                    <img src="./img/台中/20260118_153714.jpg"/>
+                    <!-- Image Description -->
+                    <div class="capa"></div>
+                </li>
+            </ul>
+            <!-- Nav controls -->
+            <div class="drt-control control-left" id="lft-control"></div>
+            <div class="drt-control control-right" id="rht-control"></div>
+            <ul class="slider-controls" id="slider-controls"></ul>
+            <!-- Progressbar -->
+            <div class="tempo-bar" id="barra"></div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function ($) {
+            $("#slider").QCslider({
+                // options here
+            });
+        });
+
+        $(document).ready(function ($) {
+            $("#slider").QCslider({
+                duration: 5000
+            });
+        });
+    </script>
+
+
     <!-- 回到頂部按鈕 -->
-    <a href="#" class="top">top</a>
+    <a href="#" class="top"><b>top</b></a>
 
     <!-- 測試滾動用空間 -->
     <div style="height: 2000px; padding: 20px;">
