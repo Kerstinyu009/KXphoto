@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>peoplephoto</title>
+    <link class="navIcon" rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/navBar.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .people {
+            column-count: 3;
+            column-gap: 10px;
+        }
+
+        .people img {
+            width: 100%;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽列 -->
+    <nav class="navContainer">
+        <div class="navLeft">
+            <a href="./index.html">
+                <img class="navlogo" src="../img/logo-3.png" alt="LOGO">
+            </a>
+        </div>
+
+        <!-- 右側選單-->
+        <ul class="navUl">
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="./about.html" target="_parent">關於</a></li>
+
+            <!-- 下拉式導覽 -->
+            <li class="dropdown">
+                <a href="javascript:void(0)">圖片</a>
+                <div class="dropdownContent">
+                    <a href="./natureimg.html">自然</a>
+                    <a href="./peopleimg.html">人文</a>
+                    <a href="./life.html">生活</a>
+                </div>
+            </li>
+
+            <li>
+                <select class="lang-select">
+                    <option value="">請選擇語言</option>
+                    <option value="./pages/lang.html">中文</option>
+                    <option value="./pages/lang.html">English</option>
+                    <option value="./pages/lang.html">日本語</option>
+                    <option value="./pages/lang.html">แบบไทย</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <!-- img -->
+    <div class="people">
+        <img src="../img/Taichung/20240127_182704.jpg">
+        <img src="../img/Taichung/20240615_103237.jpg">
+        <img src="../img/Taichung/20240615_103305.jpg">
+        <img src="../img/Taichung/20240714_1057.jpg">
+        <img src="../img/Taichung/20240817_0630.jpg">
+        <img src="../img/Taichung/20250705.jpg">
+        <img src="../img/Taichung/20250705_1358.jpg">
+        <img src="../img/Taichung/20250719.jpg">
+        <img src="../img/Taichung/20251004_1224.jpg">
+        <img src="../img/Taichung/20251024_112044.jpg">
+        <img src="../img/Taichung/20251024_105646.jpg">
+        <img src="../img/Taichung/20260213_101630.jpg">
+        <img src="../img/Taichung/20260118_155143.jpg">
+        <img src="../img/Taichung/20260213_105804.jpg">
+        <img src="../img/Taichung/20260118.jpg">
+        <img src="../img/Taichung/20260515_205246.jpg">
+        <img src="../img/Taichung/20260219_114237.jpg">
+        <img src="../img/Taichung/20260219_114307.jpg">
+        <img src="../img/Taichung/20260219_114750.jpg">
+        <img src="../img/Taichung/20260511_172912.jpg">
+        <img src="../img/Tainan/20250301_095914.jpg">
+        <img src="../img/Tainan/20250301_102544.jpg">
+        <img src="../img/Tainan/20250302_1802.jpg">
+        <img src="../img/Tainan/20250302_142414.jpg">
+        <img src="../img/Tainan/20250312_1429.jpg">
+        <img src="../img/Taipei/20240818_1416.jpg">
+        <img src="../img/Taipei/20241027_125103.jpg">
+        <img src="../img/Taipei/20250111.jpg">
+
+        <!-- 回到頂部按鈕 -->
+        <a href="#" class="top"><b>top</b></a>
+    </div>
+</body>
+
+</html>

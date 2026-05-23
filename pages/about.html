@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link class="navIcon" rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/navBar.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .media-with-text_content {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            left: 0;
+            gap: 20px;
+            width: 98%;
+            height: 80%;
+            margin: 5px;
+            padding: 10px 10px 20px;
+        }
+
+        .text {
+            margin: 0 60px;
+            flex: 2;
+            color: white;
+        }
+
+
+        .media {
+            flex: 1;
+            padding: 40px;
+            text-align: right;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽列 -->
+    <nav class="navContainer">
+        <div class="navLeft">
+            <a href="./index.html">
+                <img class="navlogo" src="../img/logo-3.png" alt="LOGO">
+            </a>
+        </div>
+
+        <!-- 右側選單-->
+        <ul class="navUl">
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="./about.html" target="_parent">關於</a></li>
+
+            <!-- 下拉式導覽 -->
+            <li class="dropdown">
+                <a href="javascript:void(0)">圖片</a>
+                <div class="dropdownContent">
+                    <a href="./natureimg.html">自然</a>
+                    <a href="./peopleimg.html">人文</a>
+                    <a href="./life.html">生活</a>
+                </div>
+            </li>
+
+            <li>
+                <select class="lang-select">
+                    <option value="">請選擇語言</option>
+                    <option value="./pages/lang.html">中文</option>
+                    <option value="./pages/lang.html">English</option>
+                    <option value="./pages/lang.html">日本語</option>
+                    <option value="./pages/lang.html">แบบไทย</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <div class="media-with-text_content">
+        <!-- 左邊文字 -->
+        <div class="text">
+            <h1><b>視角，是思想的延伸</b></h1>
+            <hr>
+            <h2>我是 Kerstin，一名專注於光影敘事的的攝影者</h2>
+            <p>攝影是光線的幾何學，也是靈魂的顯影。
+                <br>我在明暗交界處，尋找事物最真實的輪廓與張力。
+                <br>光線決定了照片的溫度，而陰影賦予了故事的深度。
+                <br>這裡是我透過鏡頭對世界的思索，邀請您一同感受這些被光雕著的瞬間。
+            </p>
+            
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- 聯繫區塊 -->
+            <section class="contact">
+                <h3>聯繫我</h3>
+                <p>電話: +886 968356009</p>
+                <p>IG: <a href="https://www.instagram.com/designer_kerstin?">@designer_kerstin</a></p>
+                <p>Email: chouyu10811701@gmail.com</a></p>
+            </section>
+        </div>
+        <!-- 右邊圖片 -->
+        <div class="media">
+            <img src="../img/aboutme.jpg" alt="about_me" width="400px">
+        </div>
+    </div>
+</body>
+
+</html>

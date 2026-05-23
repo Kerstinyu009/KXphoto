@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>naturephoto</title>
+    <link class="navIcon" rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/navBar.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .nature {
+            column-count: 3;
+            column-gap: 10px;
+        }
+
+        .nature img {
+            width: 100%;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽列 -->
+    <nav class="navContainer">
+        <div class="navLeft">
+            <a href="./index.html">
+                <img class="navlogo" src="../img/logo-3.png" alt="LOGO">
+            </a>
+        </div>
+
+        <!-- 右側選單-->
+        <ul class="navUl">
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="../pages/about.html" target="_parent">關於</a></li>
+
+            <!-- 下拉式導覽 -->
+            <li class="dropdown">
+                <a href="javascript:void(0)">圖片</a>
+                <div class="dropdownContent">
+                    <a href="./natureimg.html">自然</a>
+                    <a href="./peopleimg.html">人文</a>
+                    <a href="./life.html">生活</a>
+                </div>
+            </li>
+
+            <li>
+                <select class="lang-select">
+                    <option value="">請選擇語言</option>
+                    <option value="./pages/lang.html">中文</option>
+                    <option value="./pages/lang.html">English</option>
+                    <option value="./pages/lang.html">日本語</option>
+                    <option value="./pages/lang.html">แบบไทย</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- img -->
+    <div class="nature">
+        <img src="../img/Nantou/20191010_1406.jpg">
+        <img src="../img/Taichung/20240810_1626.jpg">
+        <img src="../img/Taichung/20260518_180748.jpg">
+        <img src="../img/Taichung/20260511.jpg">
+        <img src="../img/Taichung/20260118_153820 .jpg">
+        <img src="../img/Taichung/20260118_153714.jpg">
+        <img src="../img/Taichung/20260219_115558.jpg">
+        <img src="../img/Taichung/20260428_173520.jpg">
+        <img src="../img/Taichung/20260518_180253.jpg">
+        <img src="../img/New Taipei/20240119.jpg">
+        <img src="../img/New Taipei/20240119_133540.jpg">
+        <img src="../img/Yunlin/20241005.jpg">
+    </div>
+
+    <!-- 回到頂部按鈕 -->
+    <a href="#" class="top"><b>top</b></a>
+
+</body>
+
+</html>

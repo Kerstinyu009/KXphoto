@@ -9,4 +9,4 @@
 ## 聯絡方式
 - Email: chouyu10811701@gmail.com  
 - Instagram: [@designer_kerstin](https://www.instagram.com/designer_kerstin?igsh=N2JqMWJ5NjQ1dzI0)  
-- phone number: [Kerstin(KXphoto)]+886 68356009
+- phone number: [Kerstin(KXphoto)]+886 968356009

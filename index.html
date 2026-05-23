@@ -7,7 +7,6 @@
     <title>KXphoto</title>
     <link class="navIcon" rel="icon" href="./img/logo.png">
     <link rel="stylesheet" href="./CSS/navBar.css">
-
     <!--  輪播圖  -->
     <link rel="stylesheet" href="./JS/image-video-carousel-qc/css/qc.slider.css">
     <script src="./JS/jQuery.js"></script>
@@ -17,19 +16,25 @@
         body {
             background-color: black;
         }
+
         /* 輪播圖css */
         :root {
-            opacity-slide: 0.5;
-            height-slider: 500px;
-            color-slider: rgba(5, 186, 218, 0.801);
-            height-responsive: 500px;
+            --opacity-slide: 0.5;
+            --height-slider: 500px;
+            --color-slider: white;
+            --height-responsive: 500px;
+        }
+
+        .capa {
+            color: white;
+            font-size: 30px;
+            text-align: right;
         }
     </style>
 
 </head>
 
 <body>
-
     <!-- 導覽列 -->
     <nav class="navContainer">
         <div class="navLeft">
@@ -41,7 +46,7 @@
         <!-- 右側選單-->
         <ul class="navUl">
             <li><a href="./index.html">首頁</a></li>
-            <li><a href="./pages/about.html">關於</a></li>
+            <li><a href="./pages/about.html" target="_self">關於</a></li>
 
             <!-- 下拉式導覽 -->
             <li class="dropdown">
@@ -65,13 +70,26 @@
         </ul>
     </nav>
 
+
     <!-- 輪播圖 -->
     <section class="slide">
         <div class="slider-container">
             <ul class="slider-wrapper" id="slider">
                 <li class="slide-current">
                     <!-- Image -->
-                    <img src="./img/台中/20260118_153714.jpg"/>
+                    <img src="./img/台中/20260118_153714.jpg" />
+                    <!-- Image Description -->
+                    <div class="capa"><b>高美濕地</b></div>
+                </li>
+                <li>
+                    <!-- Image -->
+                    <img src="./img/台中/刑武場.jpg" />
+                    <!-- Image Description -->
+                    <div class="capa"></div>
+                </li>
+                <li>
+                    <!-- Image -->
+                    <img src="./img/南投/20191010_修改過.jpg" />
                     <!-- Image Description -->
                     <div class="capa"></div>
                 </li>
@@ -93,7 +111,7 @@
 
         $(document).ready(function ($) {
             $("#slider").QCslider({
-                duration: 5000
+                duration: 5000 
             });
         });
     </script>
