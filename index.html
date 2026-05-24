@@ -17,6 +17,10 @@
             background-color: black;
         }
 
+        h2 {
+            color: white;
+        }
+
         /* 輪播圖css */
         :root {
             --opacity-slide: 0.5;
@@ -30,6 +34,7 @@
             font-size: 30px;
             text-align: right;
         }
+    
     </style>
 
 </head>
@@ -77,19 +82,13 @@
             <ul class="slider-wrapper" id="slider">
                 <li class="slide-current">
                     <!-- Image -->
-                    <img src="./img/台中/20260118_153714.jpg" />
+                    <img src="./img/Taichung/20260511_172912.jpg" />
                     <!-- Image Description -->
-                    <div class="capa"><b>高美濕地</b></div>
+                    <!-- <div class="capa"><b>高美濕地</b></div> -->
                 </li>
                 <li>
                     <!-- Image -->
-                    <img src="./img/台中/刑武場.jpg" />
-                    <!-- Image Description -->
-                    <div class="capa"></div>
-                </li>
-                <li>
-                    <!-- Image -->
-                    <img src="./img/南投/20191010_修改過.jpg" />
+                    <img src="./img/Miaoli/20240810_0854.jpg" />
                     <!-- Image Description -->
                     <div class="capa"></div>
                 </li>
@@ -111,18 +110,20 @@
 
         $(document).ready(function ($) {
             $("#slider").QCslider({
-                duration: 5000 
+                duration: 5000
             });
         });
     </script>
 
+    <!-- 精選圖片 -->
+    <h2>精選圖片</h2>
 
     <!-- 回到頂部按鈕 -->
     <a href="#" class="top"><b>top</b></a>
 
-    <!-- 測試滾動用空間 -->
+    <!-- 測試滾動用空間
     <div style="height: 2000px; padding: 20px;">
-        <h2>網頁內容區域</h2>
+        <h2>網頁內容區域</h2> -->
     </div>
 
 </body>
