@@ -7,10 +7,13 @@
     <title>KXphoto</title>
     <link class="navIcon" rel="icon" href="./img/logo.png">
     <link rel="stylesheet" href="./CSS/navBar.css">
-    <!--  輪播圖  -->
+    <!-- Carousel  -->
     <link rel="stylesheet" href="./JS/image-video-carousel-qc/css/qc.slider.css">
     <script src="./JS/jQuery.js"></script>
     <script src="./JS/image-video-carousel-qc/qcslider.jquery.js"></script>
+    <!-- Language API-->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        type="text/javascript"></script>
 
     <style>
         body {
@@ -19,28 +22,39 @@
 
         h2 {
             color: white;
+            text-align: center;
         }
 
-        /* 輪播圖css */
-        :root {
-            --opacity-slide: 0.5;
-            --height-slider: 500px;
-            --color-slider: white;
-            --height-responsive: 500px;
+        hr {
+            width: 5%;
+            margin-bottom: 50px;
         }
 
-        .capa {
-            color: white;
-            font-size: 30px;
-            text-align: right;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
         }
-    
+
+        .gallery img {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 10px;
+            object-fit: cover;
+            box-sizing: border-box;
+        }
+
+        .imgText {
+            color: aliceblue;
+            text-align: center;
+            font-size: 18px;
+        }
     </style>
 
 </head>
 
 <body>
-    <!-- 導覽列 -->
+    <!-- navBar -->
     <nav class="navContainer">
         <div class="navLeft">
             <a href="./index.html">
@@ -48,12 +62,12 @@
             </a>
         </div>
 
-        <!-- 右側選單-->
+        <!-- Right-side menu-->
         <ul class="navUl">
             <li><a href="./index.html">首頁</a></li>
             <li><a href="./pages/about.html" target="_self">關於</a></li>
 
-            <!-- 下拉式導覽 -->
+            <!-- Drop-down nav -->
             <li class="dropdown">
                 <a href="javascript:void(0)">圖片</a>
                 <div class="dropdownContent">
@@ -62,36 +76,38 @@
                     <a href="./pages/life.html">生活</a>
                 </div>
             </li>
-
-            <li>
-                <select class="lang-select">
-                    <option value="">請選擇語言</option>
-                    <option value="./pages/lang.html">中文</option>
-                    <option value="./pages/lang.html">English</option>
-                    <option value="./pages/lang.html">日本語</option>
-                    <option value="./pages/lang.html">แบบไทย</option>
-                </select>
-            </li>
+            <div class="google_translate_element">
+                <li>
+                    <select class="lang-select" onchange="changeLanguage(this.value)">
+                        <option value="">請選擇語言</option>
+                        <option value="zh-TW">繁體中文</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="th">แบบไทย</option>
+                    </select>
+                </li>
+                <div id="google_translate_element" style="display: none;"></div>
+            </div>
         </ul>
     </nav>
-
-
-    <!-- 輪播圖 -->
+    <!-- Carousel -->
     <section class="slide">
         <div class="slider-container">
             <ul class="slider-wrapper" id="slider">
                 <li class="slide-current">
                     <!-- Image -->
-                    <img src="./img/Taichung/20260511_172912.jpg" />
-                    <!-- Image Description -->
-                    <!-- <div class="capa"><b>高美濕地</b></div> -->
+                    <img src="./img/Taichung/20240810_1626.jpg" />
                 </li>
                 <li>
-                    <!-- Image -->
-                    <img src="./img/Miaoli/20240810_0854.jpg" />
-                    <!-- Image Description -->
-                    <div class="capa"></div>
+                    <img src="./img/Taichung/20260118_153820 .jpg" />
                 </li>
+                <li>
+                    <img src="./img/Tainan/20250302_142414.jpg" />
+                </li>
+                <li>
+                    <img src="./img/Yunlin/20241006_0947.jpg" />
+                </li>
+
             </ul>
             <!-- Nav controls -->
             <div class="drt-control control-left" id="lft-control"></div>
@@ -102,37 +118,102 @@
         </div>
     </section>
     <script>
-        $(document).ready(function ($) {
-            $("#slider").QCslider({
-                // options here
-            });
-        });
-
+        // Carousel  duration
         $(document).ready(function ($) {
             $("#slider").QCslider({
                 duration: 5000
             });
         });
+        // Language controls
+        // limit 
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'zh-TW',
+                includedLanguages: 'zh-TW,en,ja,th', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+        function changeLanguage(langCode) {
+            if (!langCode) return;
+            const googleSelect = document.querySelector('#google_translate_element select');
+            if (googleSelect) {
+                googleSelect.value = langCode;
+                googleSelect.dispatchEvent(new Event('change'));
+
+                let checkCount = 0;
+                const forceHideInterval = setInterval(() => {
+                    document.body.style.top = "0px";
+                    document.body.style.position = "static";
+                    const googIframe = document.querySelector('iframe.skiptranslate');
+                    if (googIframe) {
+                        googIframe.style.display = 'none';
+                        googIframe.style.visibility = 'hidden';
+                    }
+                    checkCount++;
+                    if (checkCount > 20) clearInterval(forceHideInterval);
+                }, 100);
+            }
+        }
     </script>
 
-    <!-- 精選圖片 -->
-    <h2>精選圖片</h2>
+    <!-- Select img -->
+    <h2>精選</h2>
+    <hr>
+    <div class="gallery">
+        <div class="gallery_item">
+            <img src="./img/Taichung/20260511_173817.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">台中-中央公園</div>
+        </div>
 
-    <!-- 回到頂部按鈕 -->
-    <a href="#" class="top"><b>top</b></a>
+        <div class="gallery_item">
+            <img src="./img/Kaohsiung/20241221_v2.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">高雄-高雄港</div>
+        </div>
 
-    <!-- 測試滾動用空間
-    <div style="height: 2000px; padding: 20px;">
-        <h2>網頁內容區域</h2> -->
+        <div class="gallery_item">
+            <img src="./img/New Taipei/20240119_165348.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">新北-平溪</div>
+        </div>
+        <div class="gallery_item">
+            <img src="./img/Yunlin/20241005_v1.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">雲林-西螺</div>
+        </div>
+
+        <div class="gallery_item">
+            <img src="./img/Taipei/20241027_125103.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">台北-松山機場</div>
+        </div>
+
+        <div class="gallery_item">
+            <img src="./img/Taipei/20250111.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">台北-西門町</div>
+        </div>
+
+        <div class="gallery_item">
+            <img src="./img/Taichung/20240817_0630.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">台中-東海大學</div>
+        </div>
+
+        <div class="gallery_item">
+            <img src="./img/Taichung/20251004_1224.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">台中-西屯</div>
+        </div>
+
+        <div class="gallery_item">
+            <img src="./img/Yunlin/20241005.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">雲林-西螺</div>
+        </div>
+
+        <div class="gallery_item">
+            <img src="./img/Taichung/20251024.jpg" onclick="openModal('modal1', 'Cinque Terre')">
+            <div class="imgText">台中-美術館</div>
+        </div>
+
     </div>
 
-</body>
 
-</html>
-
-
-
-
+    <!-- Top buttom -->
+    <a href="#" class="top"><b>top</b></a>
 </body>
 
 </html>

@@ -8,8 +8,8 @@
 **/
 :root {
   --opacity-slide: 0.5;
-  --height-slider: 500px;
-  --color-slider: #ff3e00;
+  --height-slider: 750px;
+  --color-slider: white;
   --height-responsive: 500px;
 }
 
@@ -25,11 +25,13 @@ section.slide {
   width: 100%;
   height: var(--height-slider);
 }
+
 @media only screen and (max-width: 766px) {
   section.slide {
     height: var(--height-responsive);
   }
 }
+
 section.slide .slider-container {
   width: 100%;
   height: 100%;
@@ -42,6 +44,7 @@ section.slide .slider-container {
   position: relative;
   background-color: #FFFFFF;
 }
+
 section.slide .slider-container .slider-wrapper {
   margin: 0;
   padding: 0;
@@ -50,17 +53,21 @@ section.slide .slider-container .slider-wrapper {
   height: 100%;
   position: relative;
 }
+
 section.slide .slider-container .slider-wrapper li {
   display: none;
 }
+
 section.slide .slider-container .slider-wrapper li.slide-current {
   display: block;
 }
+
 section.slide .slider-container .slider-wrapper li.video {
   height: 100%;
   position: relative;
   background: #000000;
 }
+
 section.slide .slider-container .slider-wrapper li.video .include {
   top: 0;
   left: 0;
@@ -69,6 +76,7 @@ section.slide .slider-container .slider-wrapper li.video .include {
   margin: 0 auto;
   position: absolute;
 }
+
 section.slide .slider-container .slider-wrapper li.video .include::before {
   top: 0;
   left: 0;
@@ -78,7 +86,11 @@ section.slide .slider-container .slider-wrapper li.video .include::before {
   height: 100%;
   position: absolute;
 }
-section.slide .slider-container .slider-wrapper li.video .include iframe, section.slide .slider-container .slider-wrapper li.video .include object, section.slide .slider-container .slider-wrapper li.video .include embed, section.slide .slider-container .slider-wrapper li.video .include video {
+
+section.slide .slider-container .slider-wrapper li.video .include iframe,
+section.slide .slider-container .slider-wrapper li.video .include object,
+section.slide .slider-container .slider-wrapper li.video .include embed,
+section.slide .slider-container .slider-wrapper li.video .include video {
   top: 0;
   left: 0;
   z-index: 2;
@@ -86,6 +98,7 @@ section.slide .slider-container .slider-wrapper li.video .include iframe, sectio
   height: 100%;
   position: absolute;
 }
+
 section.slide .slider-container .slider-wrapper li img {
   position: absolute;
   top: 0;
@@ -95,6 +108,7 @@ section.slide .slider-container .slider-wrapper li img {
   height: 100%;
   object-fit: cover;
 }
+
 section.slide .slider-container .slider-wrapper li .capa {
   top: 0;
   left: 0;
@@ -105,6 +119,7 @@ section.slide .slider-container .slider-wrapper li .capa {
   position: absolute;
   background: rgba(0, 0, 0, 0.1);
 }
+
 section.slide .slider-container .drt-control {
   top: 40%;
   z-index: 90;
@@ -118,23 +133,28 @@ section.slide .slider-container .drt-control {
   transition: all 0.5s;
   background: rgba(0, 0, 0, var(--opacity-slide));
 }
+
 @media only screen and (max-width: 766px) {
   section.slide .slider-container .drt-control {
     padding: 20px;
     font-size: 20px;
   }
 }
+
 section.slide .slider-container .drt-control:hover {
   background: black;
 }
+
 section.slide .slider-container .drt-control.control-left {
   left: -20px;
   border-radius: 0px 50px 50px 0px;
 }
+
 section.slide .slider-container .drt-control.control-right {
   right: -20px;
   border-radius: 50px 0 0 50px;
 }
+
 section.slide .slider-container .slider-controls {
   z-index: 90;
   width: 100%;
@@ -146,13 +166,15 @@ section.slide .slider-container .slider-controls {
   padding-bottom: 15px;
   background: rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
+
 @media only screen and (max-width: 766px) {
   section.slide .slider-container .slider-controls {
     background: rgb(0, 0, 0);
   }
 }
+
 section.slide .slider-container .slider-controls li {
   zoom: 1;
   width: 25px;
@@ -169,14 +191,17 @@ section.slide .slider-container .slider-controls li {
   -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
 }
+
 @media only screen and (max-width: 766px) {
   section.slide .slider-container .slider-controls li {
     width: calc(25% - 40px);
   }
 }
+
 section.slide .slider-container .slider-controls li.active {
   background: var(--color-slider);
 }
+
 section.slide .slider-container .tempo-bar {
   position: absolute;
   bottom: 0px;

@@ -8,26 +8,42 @@
     <link class="navIcon" rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../CSS/navBar.css">
     <style>
+        html,
         body {
             background-color: black;
+            margin: 0;
+            padding: 0;
         }
 
         .media-with-text_content {
-            position: absolute;
             display: flex;
             justify-content: space-between;
-            left: 0;
-            gap: 20px;
-            width: 98%;
-            height: 80%;
-            margin: 5px;
-            padding: 10px 10px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 5px 0 0 0;
+            padding: 10px;
+            /* border: 5px solid red; */
         }
 
         .text {
             margin: 0 60px;
             flex: 2;
             color: white;
+            margin-bottom: 80px;
+        }
+
+        .contactBox {
+            width: 100%;
+            background-color: #0b253a;
+            padding: 30px 0;
+
+        }
+
+        .contact {
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            font-size: 20px;
         }
 
 
@@ -42,7 +58,13 @@
         }
 
         h2 {
+            font-size: 40px;
+        }
+
+        h3 {
             font-size: 30px;
+            color: white;
+            text-align: center;
         }
 
         p {
@@ -51,7 +73,14 @@
 
         a {
             color: white;
+            text-decoration: none;
         }
+
+        a:hover {
+            color:  #38d1ff;
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 
@@ -94,36 +123,28 @@
         <!-- 左邊文字 -->
         <div class="text">
             <h1><b>視角，是思想的延伸</b></h1>
-            <hr>
-            <h2>我是 Kerstin，一名專注於光影敘事的的攝影者</h2>
+            <hr style="border: 1px solid rgba(255,255,255,0.2);">
+            <h2>我是 Kerstin，一名專注於光影敘事的攝影者</h2>
             <p>攝影是光線的幾何學，也是靈魂的顯影。
                 <br>我在明暗交界處，尋找事物最真實的輪廓與張力。
                 <br>光線決定了照片的溫度，而陰影賦予了故事的深度。
                 <br>這裡是我透過鏡頭對世界的思索，邀請您一同感受這些被光雕著的瞬間。
             </p>
-            
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <!-- 聯繫區塊 -->
-            <section class="contact">
-                <h3>聯繫我</h3>
-                <p>電話: +886 968356009</p>
-                <p>IG: <a href="https://www.instagram.com/designer_kerstin?">@designer_kerstin</a></p>
-                <p>Email: chouyu10811701@gmail.com</a></p>
-            </section>
         </div>
         <!-- 右邊圖片 -->
         <div class="media">
             <img src="../img/aboutme.jpg" alt="about_me" width="400px">
         </div>
     </div>
+    <!-- 聯繫區塊 -->
+    <section class="contactBox">
+        <h3>聯繫我</h3>
+        <div class="contact">
+            <p><b>電話:</b>&#160 +886 968356009</p>
+            <p><b>Email:</b> chouyu10811701@gmail.com</p>
+            <p><b>IG:</b><a href="https://www.instagram.com/designer_kerstin?">@designer_kerstin</a></p>
+        </div>
+    </section>
 </body>
 
 </html>
