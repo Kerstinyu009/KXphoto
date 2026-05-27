@@ -7,28 +7,75 @@
     <title>人文</title>
     <link class="navIcon" rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../CSS/navBar.css">
+    <link rel="stylesheet" href="../CSS/img.css">
+    <script src="./JS/image-video-carousel-qc/qcslider.jquery.js"></script>
+    <script src="../JS/modalBox.js"></script>
+    <link rel="stylesheet" href="../JS/modalBox.js">
+
     <style>
-        html,body {
+        html,
+        body {
             background-color: black;
             margin: 0;
             padding: 0;
         }
 
-        .people {
-            column-count: 3;
+        .photo {
+            column-count: 4;
             column-gap: 10px;
         }
 
-        .people img {
+        .photo img {
             width: 100%;
-            margin-bottom: 10px;
             display: block;
+        }
+
+        .photo_item {
+            position: relative;
+            break-inside: avoid;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .photo_item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            transition: 0.4s;
+            background-color: rgba(128, 128, 128, 0.5);
+            overflow: hidden;
+        }
+
+        .photo_item:hover::before {
+            left: 0;
+        }
+
+
+        .photoText {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            color: white;
+            font-size: 50px;
+            opacity: 0;
+            transition: 0.3s;
+            transition-delay: 0.2s;
+        }
+
+
+        .photo_item:hover .photoText {
+            opacity: 1;
         }
     </style>
 </head>
 
 <body>
-    <!-- 導覽列 -->
+    <!-- navBar -->
     <nav class="navContainer">
         <div class="navLeft">
             <a href="./index.html">
@@ -50,53 +97,175 @@
                     <a href="./life.html">生活</a>
                 </div>
             </li>
-
-            <li>
-                <select class="lang-select">
-                    <option value="">請選擇語言</option>
-                    <option value="./pages/lang.html">中文</option>
-                    <option value="./pages/lang.html">English</option>
-                    <option value="./pages/lang.html">日本語</option>
-                    <option value="./pages/lang.html">แบบไทย</option>
-                </select>
-            </li>
         </ul>
     </nav>
     <!-- img -->
-    <div class="people">
-        <img src="../img/Taichung/20240127_182704.jpg">
-        <img src="../img/Taichung/20240615_103237.jpg">
-        <img src="../img/Taichung/20240615_103305.jpg">
-        <img src="../img/Taichung/20240714_1057.jpg">
-        <img src="../img/Taichung/20240817_0630.jpg">
-        <img src="../img/Taichung/20250705.jpg">
-        <img src="../img/Taichung/20250705_1358.jpg">
-        <img src="../img/Taichung/20250719.jpg">
-        <img src="../img/Taichung/20251004_1224.jpg">
-        <img src="../img/Taichung/20251024_112044.jpg">
-        <img src="../img/Taichung/20251024_105646.jpg">
-        <img src="../img/Taichung/20260213_101630.jpg">
-        <img src="../img/Taichung/20260118_155143.jpg">
-        <img src="../img/Taichung/20260213_105804.jpg">
-        <img src="../img/Taichung/20260118.jpg">
-        <img src="../img/Taichung/20260515_205246.jpg">
-        <img src="../img/Taichung/20260511_172912.jpg">
-        <img src="../img/Taichung/20260219_114237.jpg">
-        <img src="../img/Taichung/20260219_114307.jpg">
-        <img src="../img/Taichung/20260219_114750.jpg">
-        <img src="../img/Tainan/20250301_095914.jpg">
-        <img src="../img/Tainan/20250301_102544.jpg">
-        <img src="../img/Tainan/20250302_1802.jpg">
-        <img src="../img/Tainan/20250302_142414.jpg">
-        <img src="../img/Tainan/20250312_1429.jpg">
-        <img src="../img/Taipei/20240818_1416.jpg">
-        <img src="../img/Taipei/20241027_125103.jpg">
-        <img src="../img/Taipei/20250111.jpg">
-        <img src="../img/Miaoli/20240810_0854.jpg">
-        <img src="../img/New Taipei/20240119_165348.jpg">
-        <img src="../img/Yunlin/20241005_v1.jpg">
-        <img src="../img/Yunlin/20241006_0947.jpg">
+    <div class="photo">
+        <div class="photo_item">
+            <img src="../img/Taichung/20240127_182704.jpg">
+            <div class="photoText">台中-刑務所演武場</div>
+        </div>
 
+        <div class="photo_item">
+            <img src="../img/Taichung/20240615_103237.jpg">
+            <div class="photoText">台中-潭雅神綠園道</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20240615_103305.jpg">
+            <div class="photoText">台中-潭雅神綠園道</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20240714_1057.jpg">
+            <div class="photoText">台中-長壽山</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20240817_0630.jpg">
+            <div class="photoText">台中-東海大學</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20250705.jpg">
+            <div class="photoText">台中-台中火車站</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20250705_1358.jpg">
+            <div class="photoText">台中-台中火車站</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20250719.jpg">
+            <div class="photoText">台中-月眉糖廠</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20251004_1224.jpg">
+            <div class="photoText">台中-西屯</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20251024_112044.jpg">
+            <div class="photoText">台中-西屯</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20251024_105646.jpg">
+            <div class="photoText">台中-美術館</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260213_101630.jpg">
+            <div class="photoText">台中-東勢林場</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260118_155143.jpg">
+            <div class="photoText">台中-高美濕地</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260213_105804.jpg">
+            <div class="photoText">台中-東勢林場</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260118.jpg">
+            <div class="photoText">台中-高美濕地</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260515_205246.jpg">
+            <div class="photoText">台中-西屯</div>
+        </div>
+
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260511_172912.jpg">
+            <div class="photoText">台中-中央公園</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260219_114237.jpg">
+            <div class="photoText">台中-梧棲漁港</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260219_114307.jpg">
+            <div class="photoText">台中-梧棲漁港</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taichung/20260219_114750.jpg">
+            <div class="photoText">台中-梧棲漁港</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Tainan/20250301_095914.jpg">
+            <div class="photoText">台南-台南火車站</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Tainan/20250301_102544.jpg">
+            <div class="photoText">台南-中西區</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Tainan/20250302_1802.jpg">
+            <div class="photoText">台南-保安火車站</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Tainan/20250302_142414.jpg">
+            <div class="photoText">台南-奇美博物館</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Tainan/20250312_1429.jpg">
+            <div class="photoText">台南-奇美博物館</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taipei/20240818_1416.jpg">
+            <div class="photoText">台北-中正紀念堂</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Tainan/20250301_142922.jpg">
+            <div class="photoText">台南-司法博物館</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taipei/20241027_125103.jpg">
+            <div class="photoText">台北-松山機場</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Taipei/20250111.jpg">
+            <div class="photoText">台北-西門町</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Miaoli/20240810_0854.jpg">
+            <div class="photoText">苗栗-鳴鳳古道</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/New Taipei/20240119_165348.jpg">
+            <div class="photoText">新北-平溪</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Yunlin/20241005_v1.jpg">
+            <div class="photoText">雲林-西螺</div>
+        </div>
+
+        <div class="photo_item">
+            <img src="../img/Yunlin/20241006_0947.jpg">
+            <div class="photoText">雲林-西螺</div>
+        </div>
 
         <!-- 回到頂部按鈕 -->
         <a href="#" class="top"><b>top</b></a>

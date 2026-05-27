@@ -1,0 +1,65 @@
+      .photo {
+          column-count: 4;
+          column-gap: 10px;
+      }
+
+      .photo img {
+          width: 100%;
+          display: block;
+      }
+
+      .photo_item {
+          position: relative;
+          width: 100%;
+          break-inside: avoid;
+          margin-bottom: 10px;
+          display: block;
+          overflow: hidden;
+      }
+
+      .photo_item::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 100%;
+          width: 100%;
+          height: 100%;
+          transition: 0.4s;
+          overflow: hidden;
+          background-color: rgba(128, 128, 128, 0.5);
+      }
+
+      .photo_item:hover::before {
+          left: 0;
+      }
+
+      .photoText {
+          position: absolute;
+          right: 5px;
+          bottom: 5px;
+          color: white;
+          font-size: 50px;
+          opacity: 0;
+          transition: 0.3s;
+          transition-delay: 0.2s;
+      }
+
+      .photo_item:hover {
+          left: 0;
+      }
+
+      .photo_item:hover .photoText {
+          opacity: 1;
+      }
+
+      .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 999;
+          display: none;
+          max-width: 80%;
+          max-height: 80%;
+      }

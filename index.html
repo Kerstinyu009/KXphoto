@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="./JS/image-video-carousel-qc/css/qc.slider.css">
     <script src="./JS/jQuery.js"></script>
     <script src="./JS/image-video-carousel-qc/qcslider.jquery.js"></script>
-    <!-- Language API-->
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-        type="text/javascript"></script>
 
     <style>
         body {
@@ -84,18 +81,6 @@
                     <a href="./pages/life.html">生活</a>
                 </div>
             </li>
-            <div class="google_translate_element">
-                <li>
-                    <select class="lang-select" onchange="changeLanguage(this.value)">
-                        <option value="">請選擇語言</option>
-                        <option value="zh-TW">繁體中文</option>
-                        <option value="en">English</option>
-                        <option value="ja">日本語</option>
-                        <option value="th">แบบไทย</option>
-                    </select>
-                </li>
-                <div id="google_translate_element" style="display: none;"></div>
-            </div>
         </ul>
     </nav>
     <!-- Carousel -->
@@ -132,36 +117,7 @@
                 duration: 5000
             });
         });
-        // Language controls
-        // limit 
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'zh-TW',
-                includedLanguages: 'zh-TW,en,ja,th',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-        function changeLanguage(langCode) {
-            if (!langCode) return;
-            const googleSelect = document.querySelector('#google_translate_element select');
-            if (googleSelect) {
-                googleSelect.value = langCode;
-                googleSelect.dispatchEvent(new Event('change'));
 
-                let checkCount = 0;
-                const forceHideInterval = setInterval(() => {
-                    document.body.style.top = "0px";
-                    document.body.style.position = "static";
-                    const googIframe = document.querySelector('iframe.skiptranslate');
-                    if (googIframe) {
-                        googIframe.style.display = 'none';
-                        googIframe.style.visibility = 'hidden';
-                    }
-                    checkCount++;
-                    if (checkCount > 20) clearInterval(forceHideInterval);
-                }, 100);
-            }
-        }
     </script>
 
     <!-- News img -->
