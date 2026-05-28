@@ -8,7 +8,8 @@
     <link class="navIcon" rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../CSS/navBar.css">
     <link rel="stylesheet" href="../CSS/img.css">
-
+    <!-- lightBix -->
+    <link rel="stylesheet" href="../CSS/lightBix.css">
 
 
     <style>
@@ -49,75 +50,96 @@
 
     <!-- img -->
     <div class="photo">
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Nantou/20191010_1406.jpg')">
             <img src="../img/Nantou/20191010_1406.jpg">
             <div class="photoText">南投-泰雅族渡假村</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20240810_1626.jpg')">
             <img src="../img/Taichung/20240810_1626.jpg">
             <div class="photoText">台中-高美濕地</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20260518_180748.jpg')">
             <img src="../img/Taichung/20260518_180748.jpg">
             <div class="photoText">台中-中央公園</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20260511.jpg')">
             <img src="../img/Taichung/20260511.jpg">
             <div class="photoText">台中-中央公園</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20260118_153820 .jpg')">
             <img src="../img/Taichung/20260118_153820 .jpg">
             <div class="photoText">台中-高美濕地</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20260118_153714.jpg')">
             <img src="../img/Taichung/20260118_153714.jpg">
             <div class="photoText">台中-高美濕地</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20260219_115558.jpg')">
             <img src="../img/Taichung/20260219_115558.jpg">
             <div class="photoText">台中-梧棲漁港</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20260428_173520.jpg')">
             <img src="../img/Taichung/20260428_173520.jpg">
             <div class="photoText">台中-中央公園</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/New Taipei/20240119.jpg')">
             <img src="../img/New Taipei/20240119.jpg">
             <div class="photoText">新北-猴桐</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/New Taipei/20240119_133540.jpg')">
             <img src="../img/New Taipei/20240119_133540.jpg">
             <div class="photoText">新北-猴桐</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Yunlin/20241005.jpg')">
             <img src="../img/Yunlin/20241005.jpg">
             <div class="photoText">雲林-西螺</div>
         </div>
 
-        <div class="photo_item">
+        <div class="photo_item" onclick="openModal('../img/Taichung/20260518_180253.jpg')">
             <img src="../img/Taichung/20260518_180253.jpg">
             <div class="photoText">台中-中央公園</div>
         </div>
     </div>
 
+
+    <!-- lightBox -->
+    <div id="lightBox" class="modal">
+        <span id="closeModal" class="close" onclick="closeModal()">&times;</span>
+        <img id="lightBoxImg" class="modalBox">
+        <div id="lightBoxText"></div>
+    </div>
+
+
+
+
+    <script>
+        // lightBox
+        function openModal(imgSrc) {
+            document.getElementById("lightBox").style.display = "flex"
+            document.getElementById("lightBoxImg").src = imgSrc;
+        };
+
+        // close botton
+        function closeModal() {
+            document.getElementById("lightBox").style.display = "none";
+
+        };
+
+    </script>
+
+
     <!-- Top buttom -->
     <a href="#" class="top"><b>top</b></a>
-
-    <!-- Enlarge image Box-->
-    <div class="modalBox">
-        <button class="modalButton">&times;</button>
-        <img class="modal_img" alt="Enlarge image">
-    </div>
 </body>
 
 </html>

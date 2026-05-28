@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="./JS/image-video-carousel-qc/css/qc.slider.css">
     <script src="./JS/jQuery.js"></script>
     <script src="./JS/image-video-carousel-qc/qcslider.jquery.js"></script>
-
+    <!-- lightBix -->
+    <link rel="stylesheet" href="./CSS/lightBix.css">
     <style>
         body {
             background-color: black;
@@ -41,12 +42,18 @@
             margin-bottom: 10px;
             object-fit: cover;
             box-sizing: border-box;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.04);
+            filter: brightness(1.15);
         }
 
         .imgText {
             color: aliceblue;
             text-align: center;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .newText {
@@ -81,6 +88,7 @@
                     <a href="./pages/life.html">生活</a>
                 </div>
             </li>
+
         </ul>
     </nav>
     <!-- Carousel -->
@@ -110,6 +118,70 @@
             <div class="tempo-bar" id="barra"></div>
         </div>
     </section>
+
+
+    <!-- Select img -->
+    <h2>精選</h2>
+    <hr>
+    <div class="gallery">
+        <div class="gallery_item" onclick="openModal('./img/Taichung/20260511_173817.jpg', '台中-中央公園')">
+            <img src="./img/Taichung/20260511_173817.jpg">
+            <div class="imgText">台中-中央公園</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/Kaohsiung/20241221_v2.jpg', '高雄-高雄港')">
+            <img src="./img/Kaohsiung/20241221_v2.jpg">
+            <div class="imgText">高雄-高雄港</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/New Taipei/20240119_165348.jpg', '新北-平溪')">
+            <img src="./img/New Taipei/20240119_165348.jpg">
+            <div class="imgText">新北-平溪</div>
+        </div>
+        <div class="gallery_item" onclick="openModal('./img/Yunlin/20241005_v1.jpg', '雲林-西螺')">
+            <img src="./img/Yunlin/20241005_v1.jpg">
+            <div class="imgText">雲林-西螺</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/Taipei/20241027_125103.jpg', '台北-松山機場')">
+            <img src="./img/Taipei/20241027_125103.jpg">
+            <div class="imgText">台北-松山機場</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/Taipei/20250111.jpg', '台北-西門町')">
+            <img src="./img/Taipei/20250111.jpg">
+            <div class="imgText">台北-西門町</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/Taichung/20240817_0630.jpg', '台中-東海大學')">
+            <img src="./img/Taichung/20240817_0630.jpg">
+            <div class="imgText">台中-東海大學</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/Taichung/20251004_1224.jpg', '台中-西屯')">
+            <img src="./img/Taichung/20251004_1224.jpg">
+            <div class="imgText">台中-西屯</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/Yunlin/20241005.jpg', '雲林-西螺')">
+            <img src="./img/Yunlin/20241005.jpg">
+            <div class="imgText">雲林-西螺</div>
+        </div>
+
+        <div class="gallery_item" onclick="openModal('./img/Taichung/20251024.jpg', '台中-美術館')">
+            <img src="./img/Taichung/20251024.jpg">
+            <div class="imgText">台中-美術館</div>
+        </div>
+
+    </div>
+
+    <!-- lightBox -->
+    <div id="lightBox" class="modal">
+        <span id="closeModal" class="close" onclick="closeModal()">&times;</span>
+        <img id="lightBoxImg" class="modalBox">
+        <div id="lightBoxText"></div>
+    </div>
+
     <script>
         // Carousel  duration
         $(document).ready(function ($) {
@@ -118,69 +190,19 @@
             });
         });
 
+        // lightBox
+        function openModal(imgSrc) {
+            document.getElementById("lightBox").style.display = "flex"
+            document.getElementById("lightBoxImg").src = imgSrc;
+        };
+
+        // close botton
+        function closeModal() {
+            document.getElementById("lightBox").style.display = "none";
+
+        };
+
     </script>
-
-    <!-- News img -->
-    <section class="newImgs">
-        <div class="newText"><b>最新動態</b></div>
-
-    </section>
-
-    <!-- Select img -->
-    <h2>精選</h2>
-    <hr>
-    <div class="gallery">
-        <div class="gallery_item">
-            <img src="./img/Taichung/20260511_173817.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">台中-中央公園</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/Kaohsiung/20241221_v2.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">高雄-高雄港</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/New Taipei/20240119_165348.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">新北-平溪</div>
-        </div>
-        <div class="gallery_item">
-            <img src="./img/Yunlin/20241005_v1.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">雲林-西螺</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/Taipei/20241027_125103.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">台北-松山機場</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/Taipei/20250111.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">台北-西門町</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/Taichung/20240817_0630.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">台中-東海大學</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/Taichung/20251004_1224.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">台中-西屯</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/Yunlin/20241005.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">雲林-西螺</div>
-        </div>
-
-        <div class="gallery_item">
-            <img src="./img/Taichung/20251024.jpg" onclick="openModal('modal1', 'Cinque Terre')">
-            <div class="imgText">台中-美術館</div>
-        </div>
-
-    </div>
-
 
     <!-- Top buttom -->
     <a href="#" class="top"><b>top</b></a>
