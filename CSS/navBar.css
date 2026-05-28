@@ -81,14 +81,7 @@
     display: block;
 }
 
-/* 5. 語言選擇器樣式 */
-.lang-select {
-    padding: 6px 12px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-/* 6. 回到頂部按鈕 */
+/* 回到頂部按鈕 */
 .top {
     position: fixed;
     bottom: 30px;
