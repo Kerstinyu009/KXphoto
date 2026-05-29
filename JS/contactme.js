@@ -27,5 +27,6 @@ btn.addEventListener('click', function(event){
     .then (function(data){
         console.log('後端傳回結果',data);
         alert('表單傳送成功');
+        form.reset();
         });
     });

@@ -58,6 +58,7 @@ h3 {
 
 input, textarea {
     padding: 10px;
+    font-size: 18px;
 }
 textarea {
     width: 100%;
