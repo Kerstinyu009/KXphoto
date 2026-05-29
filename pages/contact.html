@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我</title>
+    <link class="navIcon" rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/navBar.css">
+    <link rel="stylesheet" href="../CSS/contact.css">
+    <style>
+        .contactBox {
+            width: 100%;
+            background-color: rgb(44, 62, 80);
+            padding: 10px 0;
+        }
+
+        .contact {
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            font-size: 20px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #38d1ff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navBar -->
+    <nav class="navContainer">
+        <div class="navLeft">
+            <a href="../index.html" title="KXphoto">
+                <img class="navlogo" src="../img/logo-3.png" alt="LOGO">
+            </a>
+        </div>
+
+        <!-- Right-side menu-->
+        <ul class="navUl">
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="../pages/about.html">關於</a></li>
+
+            <!-- Drop-down nav -->
+            <li class="dropdown">
+                <a href="javascript:void(0)">圖片</a>
+                <div class="dropdownContent">
+                    <a href="./natureimg.html">自然</a>
+                    <a href="./peopleimg.html">人文</a>
+                    <a href="./life.html">生活</a>
+                </div>
+            </li>
+
+            <li>
+                <a href="../pages/contact.html">聯絡</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- contact form-->
+    <h1>聯絡我們</h1>
+    <h3>聯絡 KXphoto</h3>
+    <p class="pEmail">chouyu10811701@gmail.com</p>
+    <form id="contactForm">
+        <div class="sideByside">
+            <div class="userNamegroup">
+                <label for="userName" id="formText">姓名</label>
+                <input type="text" id="userName">
+            </div>
+
+            <div class="userEmailgroup">
+                <label for="userEmail" id="formText">電子郵件</label>
+                <input type="text" id="userEmail">
+            </div>
+
+        </div>
+
+        <div class="userPhonegroup">
+            <label for="userPhone" id="formText">電話號碼</label>
+            <input type="text" id="userPhone">
+        </div>
+
+        <div class="userMessagegroup">
+            <label for="userMessage" id="formText">訊息</label>
+            <textarea id="userMessage"></textarea>
+        </div>
+        <br>
+        <button id="enterButton">傳送</button>
+    </form>
+
+    <!-- contactBox -->
+    <section class="contactBox">
+        <div class="contact">
+            <p><b>電話:</b>&#160 +886 968356009</p>
+            <p><b>Email:</b> chouyu10811701@gmail.com</p>
+            <p><b>IG:</b><a href="https://www.instagram.com/designer_kerstin?">@designer_kerstin</a></p>
+        </div>
+    </section>
+
+    <script src="../JS/contactme.js"></script>
+
+</body>
+
+</html>
