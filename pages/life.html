@@ -7,6 +7,8 @@
     <title>生活</title>
     <link class="navIcon" rel="icon" href="../img/logo.png">
     <link rel="stylesheet" href="../CSS/navBar.css">
+    <!-- lightBix -->
+    <link rel="stylesheet" href="../CSS/lightBix.css">
 
     <style>
         html,
@@ -30,7 +32,7 @@
 </head>
 
 <body>
-    <!-- 導覽列 -->
+    <!-- navBox -->
     <nav class="navContainer">
         <div class="navLeft">
             <a href="../index.html" title="KXphoto">
@@ -38,12 +40,12 @@
             </a>
         </div>
 
-        <!-- 右側選單-->
+        <!-- Right-side menu-->
         <ul class="navUl">
             <li><a href="../index.html">首頁</a></li>
             <li><a href="./about.html" target="_parent">關於</a></li>
 
-            <!-- 下拉式導覽 -->
+            <!-- Drop-down nav -->
             <li class="dropdown">
                 <a href="javascript:void(0)">圖片</a>
                 <div class="dropdownContent">
@@ -60,16 +62,37 @@
     </nav>
     <!-- img -->
     <div class="photo">
-        <img src="../img/cat/20240119_132206.jpg">
-        <img src="../img/cat/20240119_104515.jpg">
-        <img src="../img/cat/20240119_111039.jpg">
-        <img src="../img/cat/20240119_104630.jpg">
-        <img src="../img/cat/20240119_102918.jpg">
-        <img src="../img/cat/20240119_103652.jpg">
-        <img src="../img/cat/20240119_103829.jpg">
-        <img src="../img/cat/20240119_110710.jpg">
+        <img src="../img/cat/20240119_132206.jpg" onclick="openModal('../img/cat/20240119_132206.jpg')">
+        <img src="../img/cat/20240119_104515.jpg" onclick="openModal('../img/cat/20240119_104515.jpg')">
+        <img src="../img/cat/20240119_111039.jpg" onclick="openModal('../img/cat/20240119_111039.jpg')">
+        <img src="../img/cat/20240119_104630.jpg" onclick="openModal('../img/cat/20240119_104630.jpg')">
+        <img src="../img/cat/20240119_102918.jpg" onclick="openModal('../img/cat/20240119_102918.jpg')">
+        <img src="../img/cat/20240119_103652.jpg" onclick="openModal('../img/cat/20240119_103652.jpg')">
+        <img src="../img/cat/20240119_103829.jpg" onclick="openModal('../img/cat/20240119_103829.jpg')">
+        <img src="../img/cat/20240119_110710.jpg" onclick="openModal('../img/cat/20240119_110710.jpg')">
 
     </div>
+
+    <!-- lightBox -->
+    <div id="lightBox" class="modal">
+        <span id="closeModal" class="close" onclick="closeModal()">&times;</span>
+        <img id="lightBoxImg" class="modalBox">
+        <div id="lightBoxText"></div>
+    </div>
+
+    <script>
+        // lightBox
+        function openModal(imgSrc) {
+            document.getElementById("lightBox").style.display = "flex"
+            document.getElementById("lightBoxImg").src = imgSrc;
+        };
+
+        // close botton
+        function closeModal() {
+            document.getElementById("lightBox").style.display = "none";
+        };
+
+    </script>
 
     <!-- 回到頂部按鈕 -->
     <a href="#" class="top"><b>top</b></a>

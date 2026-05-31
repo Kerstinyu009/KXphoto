@@ -12,7 +12,7 @@
 }
 
 /* 左側 Logo 區塊 */
-.navLeft {
+.navLeft {         
     display: flex;
     align-items: center;
     flex: 1;
