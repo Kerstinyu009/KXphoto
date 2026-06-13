@@ -1,0 +1,54 @@
+/* loginBox */
+h3 {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+
+h5 {
+    color: white;
+    font-size: 20px;
+    text-align: left;
+}
+
+.pswGroup a {
+    color: white;
+    text-align: right;
+}
+
+#loginBox {
+    max-width: 600px;
+    margin: 80px auto;
+}
+
+#loginboxText {
+    color: white;
+    font-size: 20px;
+}
+
+.memberemailGroup,
+.pswGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 30px;
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+}
+
+#loginButton {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #3877FF;
+    color: white;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}

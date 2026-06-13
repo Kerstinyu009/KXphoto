@@ -1,0 +1,31 @@
+h2 {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+
+h4 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+h6 {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+.setPsw {
+    max-width: 600px;
+    margin: 80px auto;
+}
+
+/* .foremailGroup {
+
+} */
+
+.forgetemailText {
+    color: white;
+    font-size: 20px;
+}

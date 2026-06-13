@@ -30,6 +30,7 @@
             margin-bottom: 20px;
         }
 
+        /* 下方格狀排版 */
         .gallery {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -44,6 +45,10 @@
             box-sizing: border-box;
         }
 
+        .gallery img:hover {
+            cursor: pointer;
+        }
+
 
         .imgText {
             color: aliceblue;
@@ -56,34 +61,7 @@
 
 <body>
     <!-- navBar -->
-    <nav class="navContainer">
-        <div class="navLeft">
-            <a href="./index.html" title="KXphoto">
-                <img class="navlogo" src="./img/logo-3.png" alt="LOGO">
-            </a>
-        </div>
-
-        <!-- Right-side menu-->
-        <ul class="navUl">
-            <li><a href="./index.html">首頁</a></li>
-            <li><a href="./pages/about.html" target="_self">關於</a></li>
-
-            <!-- Drop-down nav -->
-            <li class="dropdown">
-                <a href="javascript:void(0)">圖片</a>
-                <div class="dropdownContent">
-                    <a href="./pages/natureimg.html">自然</a>
-                    <a href="./pages/peopleimg.html">人文</a>
-                    <a href="./pages/life.html">生活</a>
-                </div>
-            </li>
-
-            <li>
-                <a href="./pages/contact.html">聯絡</a>
-            </li>
-
-        </ul>
-    </nav>
+    <div id="nav-placeholder"></div>
     <!-- Carousel -->
     <section class="slide">
         <div class="slider-container">
@@ -175,8 +153,11 @@
         <div id="lightBoxText"></div>
     </div>
 
+    <!-- narBar -->
+    <script src="/JS/loadNav.js"></script>
+
     <script>
-        // Carousel  duration
+        // Carousel duration
         $(document).ready(function ($) {
             $("#slider").QCslider({
                 duration: 5000

@@ -1,3 +1,4 @@
+// 聯繫我
 // 抓資料
 const form = document.getElementById('contactForm');
 const btn = document.getElementById('enterButton');

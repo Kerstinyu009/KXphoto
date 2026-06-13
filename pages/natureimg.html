@@ -23,35 +23,8 @@
 </head>
 
 <body>
-    <!-- navBox -->
-    <nav class="navContainer">
-        <div class="navLeft">
-            <a href="../index.html" title="KXphoto">
-                <img class="navlogo" src="../img/logo-3.png" alt="LOGO">
-            </a>
-        </div>
-
-        <!-- Right-side menu-->
-        <ul class="navUl">
-            <li><a href="../index.html">首頁</a></li>
-            <li><a href="../pages/about.html" target="_parent">關於</a></li>
-
-            <!-- Drop-down nav -->
-            <li class="dropdown">
-                <a href="javascript:void(0)">圖片</a>
-                <div class="dropdownContent">
-                    <a href="./natureimg.html">自然</a>
-                    <a href="./peopleimg.html">人文</a>
-                    <a href="./life.html">生活</a>
-                </div>
-            </li>
-
-            <li>
-                <a href="../pages/contact.html">聯絡</a>
-            </li>
-        </ul>
-    </nav>
-
+    <!-- navBar -->
+    <div id="nav-placeholder"></div>
     <!-- img -->
     <div class="photo">
         <div class="photo_item" onclick="openModal('../img/Nantou/20191010_1406.jpg')">
@@ -123,6 +96,8 @@
         <div id="lightBoxText"></div>
     </div>
 
+    <!-- navBar -->
+    <script src="../JS/loadNav.js"></script>
     <script>
         // lightBox
         function openModal(imgSrc) {

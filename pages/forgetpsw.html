@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忘記密碼</title>
+    <link class="navIcon" rel="icon" href="../img/logo.png">
+    <link rel="stylesheet" href="../CSS/navBar.css">
+    <link rel="stylesheet" href="../CSS/forgetpsw.css">
+    <style>
+        html,
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- narBar -->
+    <div id="nav-placeholder"></div>
+    <h2>登入</h2>
+    <h4>重設密碼</h4>
+    <h6>我們會寄送電子郵件給您重設密碼</h6>
+    <form id="setPsw">
+        <div class="foremailGroup">
+            <label for="forgetEmail" id="forgetemailText">電子郵件</label>
+            <input type="email" id="forgetEmail" required>
+        </div>
+        <div>
+            <button id="forPsw">傳送</button>
+        </div>
+        <div>
+            <a href="./members.html">取消</a>
+        </div>
+    </form>
+    <!-- narBar -->
+    <script src="../JS/loadNav.js"></script>
+</body>
+
+</html>
