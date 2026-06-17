@@ -1,0 +1,158 @@
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 50px;
+}
+
+#setupForm {
+    max-width: 500px;
+    margin: 0px auto;
+    padding-bottom: 200px;
+}
+
+/* 姓名 */
+#formRow {
+    display: flex;
+    gap: 5px;
+}
+
+#setupfirstnameGroup,
+#setuplastnameGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    max-width: 500px;
+}
+
+.firstnameText,
+.lastnameText {
+    color: white;
+    font-size: 20px;
+}
+
+input {
+    font-size: 20px;
+}
+
+/* 性別 */
+#genderTitle {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#gendertitleGroup label {
+    color: white;
+    font-size: 18px;
+}
+
+/* 生日 */
+#birthdayGroup {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.birthdayTitle {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#birthdayOp {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+#birthdayOp select {
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.countryTitle {
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+}
+
+#counTry {
+    flex: 1;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* 手機號碼 */
+.phonenumContainer {
+    display: flex;
+    gap: 0;
+    width: 100%;
+}
+.phonenumTitle {
+    color: white;
+    font-size: 20px;
+}
+
+/* 左側國碼 */
+#phoneNum {
+    flex: 2;
+}
+
+
+/* 右側國家 */
+#phoneCountry {
+    flex: 1;
+    font-size: 18px;
+}
+
+/* 電子郵件 */
+#setupemailGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#setupemailGroup label{
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* 密碼、確認密碼 */
+#setuppswGroup, #setuppswgroupA {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#setuppswGroup label, #setuppswgroupA label{
+    color: white;
+    font-size: 20px;
+}
+
+/* 按鈕 */
+#setupBtn {
+    color: white;
+    font-size: 18px;
+    background-color: #3877FF;
+    border: #3877FF;
+    width: 100%;
+    margin-top: 10px;
+    padding: 3px;
+}
+
+/* 取消 */
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊會員</title>
+    <!-- narBar -->
+    <link rel="stylesheet" href="../CSS/navBar.css">
+    <script src="../JS/jQuery.js"></script>
+    <link rel="stylesheet" href="../CSS/setup.css">
+    <style>
+        html,
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text {
+            margin: 0 60px;
+            flex: 2;
+            color: white;
+            margin-bottom: 80px;
+        }
+
+        .contactBox {
+            width: 100%;
+            background-color: rgb(44, 62, 80);
+            padding: 45px 0;
+        }
+
+        .contact {
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            font-size: 25px;
+        }
+
+
+        h3 {
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            margin-top: 0;
+        }
+
+
+        #contactA {
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+
+        }
+
+        #contactA:hover {
+            color: #38d1ff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- narBar -->
+    <div id="nav-placeholder"></div>
+    <h1>註冊會員</h1>
+    <form id="setupForm">
+        <!-- 姓名 -->
+        <div id="formRow">
+            <div id="setupfirstnameGroup">
+                <label for="setupFirstname" class="firstnameText">名字</label>
+                <input type="text" id="setupFirstname" name="setupFirstname" required>
+            </div>
+
+            <div id="setuplastnameGroup">
+                <label for="setupLastname" class="lastnameText">姓氏</label>
+                <input type="text" id="setupLastname" name="setupLastname" required>
+            </div>
+        </div>
+
+        <!-- 性別 -->
+        <div id="gendertitleGroup">
+            <p id="genderTitle">性別</p>
+            <label>
+                <input type="radio" name="gender" value="male">男性
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female">女性
+            </label>
+            <label>
+                <input type="radio" name="gender" value="other">其他&#160;/&#160;不願透漏
+            </label>
+        </div>
+        <!-- 生日 -->
+        <div id="birthdayGroup">
+            <label for="birthdayTitle" class="birthdayTitle">生日</label>
+            <div id="birthdayOp">
+                <select name="birthdayM" id="birthdayM">
+                    <option value="" disabled selected hidden>月份</option>
+                    <!-- 月份迴圈 -->
+                </select>
+                <select name="birthdayD" id="birthdayD">
+                    <option value="" disabled selected hidden>日期</option>
+                    <!-- 日期迴圈 -->
+                </select>
+                <select name="birthdayY" id="birthdayY">
+                    <option value="" disabled selected hidden>年份</option>
+                    <!-- 年份迴圈 -->
+                </select>
+            </div>
+        </div>
+        <div id="countryGroup">
+            <label for="countryTitle" class="countryTitle">國家/地區</label>
+            <select name="counTry" id="counTry">
+                <option value="">選擇國家/地區</option>
+                <option value="1">澳洲</option>
+                <option value="2">汶萊</option>
+                <option value="3">柬埔寨</option>
+                <option value="4">加拿大</option>
+                <option value="5">中國</option>
+                <option value="6">法國</option>
+                <option value="7">德國</option>
+                <option value="8">香港特別行政區</option>
+                <option value="9">印度</option>
+                <option value="10">印尼</option>
+                <option value="11">義大利</option>
+                <option value="12">日本</option>
+                <option value="13">澳門特別行政區</option>
+                <option value="14">馬來西亞</option>
+                <option value="15">墨西哥</option>
+                <option value="16">紐西蘭</option>
+                <option value="17">菲律賓</option>
+                <option value="18">新加坡</option>
+                <option value="19">南韓</option>
+                <option value="20">西班牙</option>
+                <option value="21">瑞典</option>
+                <option value="22">台灣</option>
+                <option value="23">泰國</option>
+                <option value="24">英國</option>
+                <option value="25">美國</option>
+                <option value="26">越南</option>
+            </select>
+        </div>
+        <!-- 手機號碼 -->
+        <div id="phonenumGroup">
+            <!-- 標題 -->
+            <label for="phonenumTitle" class="phonenumTitle">手機號碼</label>
+
+            <!-- 整合框 -->
+            <div class="phonenumContainer">
+                <!-- 左側國碼 -->
+                <input type="tel" id="phoneNum" name="phoneNum" required>
+                <!-- 右側國家 -->
+                <select name="phoneCountry" id="phoneCountry">
+                    <option value="+886" selected>台灣(+886)</option>
+                    <option value="+61">澳洲(+61)</option>
+                    <option value="+673">汶萊(+673)</option>
+                    <option value="+855">柬埔寨(+855)</option>
+                    <option value="+1">加拿大(+1)</option>
+                    <option value="+86">中國(+86)</option>
+                    <option value="+33">法國(+33)</option>
+                    <option value="+49">德國(+49)</option>
+                    <option value="+852">香港(+852)</option>
+                    <option value="+91">印度(+91)</option>
+                    <option value="+62">印度(+62)</option>
+                    <option value="+39">義大利(+39)</option>
+                    <option value="+81">日本(+81)</option>
+                    <option value="+853">澳門特別行政區(+853)</option>
+                    <option value="+60">馬來西亞(+60)</option>
+                    <option value="+52">墨西哥(+52)</option>
+                    <option value="+63">菲律賓(+63)</option>
+                    <option value="+65">新加坡(+65)</option>
+                    <option value="+82">南韓(+82)</option>
+                    <option value="+34">西班牙(+34)</option>
+                    <option value="+46">瑞典(+46)</option>
+                    <option value="+66">泰國(+66)</option>
+                </select>
+            </div>
+        </div>
+        <!-- 電子信箱 -->
+        <div id="setupemailGroup">
+            <label for="setupEmail">電子郵件</label>
+            <input type="email" id="setupEmail" required>
+        </div>
+        <!-- 密碼 -->
+        <div id="setuppswGroup">
+            <label for="setuppsw">密碼</label>
+            <input type="password" id="setuppsw" required>
+        </div>
+        <!-- 確認密碼 -->
+        <div id="setuppswgroupA">
+            <label for="setuppswA">確認密碼</label>
+            <input type="password" id="setuppswA" required>
+        </div>
+        <!-- 取消 -->
+        <a href="./members.html">取消</a>
+        <!-- 送出 -->
+        <button id="setupBtn">送出</button>
+    </form>
+    <!-- narBar -->
+    <script src="../JS/loadNav.js"></script>
+    <!-- 年月日迴圈 -->
+    <script src="../JS/setupfunc.js"></script>
+
+    <!-- contactBox -->
+    <section class="contactBox">
+        <h3>聯繫我</h3>
+        <div class="contact">
+            <p><b>電話:</b>&#160 +886 968356009</p>
+            <p><b>Email:</b> chouyu10811701@gmail.com</p>
+            <p><b>IG:</b><a href="https://www.instagram.com/designer_kerstin?" id="contactA">@designer_kerstin</a></p>
+        </div>
+    </section>
+</body>
+
+</html>
