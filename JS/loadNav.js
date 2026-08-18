@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.text();
             })
             .then(data => {
-                // 把導覽列的 HTML 塞進容器中
+                // 把導覽列的 HTML 放進容器中
                 placeholder.innerHTML = data;
             })
             .catch(error => console.error('發生錯誤:', error));
