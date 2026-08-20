@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     if (placeholder) {
         // 從網站根目錄一律抓取 /navBar.html
-        fetch('/navBar.html')
+        fetch('navBar.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('導覽列檔案載入失敗，請檢查路徑');
