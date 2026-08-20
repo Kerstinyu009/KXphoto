@@ -15,7 +15,7 @@ btn.addEventListener('click', function(event){
     // 列印資料
     console.log('點擊按鈕，列印成功', formData);
     // 送資料給後端
-    fetch('http://localhost:3000/send/form', {
+    fetch('send/form', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'

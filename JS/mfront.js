@@ -13,7 +13,7 @@ loginForm.addEventListener('submit', function (loginEvent) {
     console.log('點擊按鈕，列印成功', loginformData)
 
     // 給後端
-    fetch('http://localhost:3000/login', {
+    fetch('/login', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'

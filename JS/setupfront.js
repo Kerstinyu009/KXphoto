@@ -35,7 +35,7 @@ $(document).ready(function () {
         }
         // 給後端
         $.ajax({
-            url: 'http://localhost:3000/setup',
+            url: '/setup',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(setupData),
