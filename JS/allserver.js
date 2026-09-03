@@ -51,54 +51,6 @@ app.post('/setpsw', function (req, res) {
     });
 });
 
-// 聯絡表單寄信
-
-const postMan = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-    }
-});
-
-app.post('/send/form', function (req, res) {
-
-    const formData = req.body;
-
-    console.log('後端收到資料：', formData);
-
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
-        subject: '新表單通知，有人聯繫',
-        text: `
-          姓名：${formData.userName}
-          電子郵件：${formData.userEmail}
-          電話號碼：${formData.userPhone}
-          訊息：${formData.userMessage}
-        `
-    };
-
-    postMan.sendMail(mailOptions, function (error, info) {
-
-        if (error) {
-
-            console.log('寄信失敗：', error);
-
-            return res.status(500).json({
-                message: '後端已經收到資料，但寄信失敗'
-            });
-        }
-
-        console.log('寄信成功：', info);
-
-        return res.json({
-            message: '後端已經收到資料，並成功寄出'
-        });
-    });
-});
-
-
 // 啟動 Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
