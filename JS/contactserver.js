@@ -45,7 +45,7 @@ app.post('/send/form', function(req, res){
     postMan.sendMail(mailOptions, function(error, info){
         if(error){
             console.log('寄信失敗', error);
-            // 已修正 messsge 拼字錯誤為 message
+            
             return res.status(500).json({ message: '後端已經收到資料，但寄信失敗' });
         }
         else {
