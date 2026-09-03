@@ -1,3 +1,51 @@
+html,
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.text {
+    margin: 0 60px;
+    flex: 2;
+    color: white;
+    margin-bottom: 80px;
+}
+
+.contactBox {
+    width: 100%;
+    background-color: rgb(44, 62, 80);
+    padding: 45px 0;
+}
+
+.contact {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    font-size: 25px;
+}
+
+
+h3 {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+
+#contactA {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+
+}
+
+#contactA:hover {
+    color: #38d1ff;
+    text-decoration: underline;
+}
+
 h1 {
     color: white;
     text-align: center;
@@ -11,13 +59,7 @@ h1 {
 }
 
 /* 姓名 */
-#formRow {
-    display: flex;
-    gap: 5px;
-}
-
-#setupfirstnameGroup,
-#setuplastnameGroup {
+#setupfirstnameGroup {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -98,6 +140,7 @@ input {
     gap: 0;
     width: 100%;
 }
+
 .phonenumTitle {
     color: white;
     font-size: 20px;
@@ -124,21 +167,23 @@ input {
     width: 100%;
 }
 
-#setupemailGroup label{
+#setupemailGroup label {
     color: white;
     font-size: 20px;
     margin-top: 10px;
 }
 
 /* 密碼、確認密碼 */
-#setuppswGroup, #setuppswgroupA {
+#setuppswGroup,
+#setuppswgroupA {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-top: 10px;
 }
 
-#setuppswGroup label, #setuppswgroupA label{
+#setuppswGroup label,
+#setuppswgroupA label {
     color: white;
     font-size: 20px;
 }

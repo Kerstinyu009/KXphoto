@@ -11,56 +11,7 @@
     <!-- setup -->
     <link rel="stylesheet" href="../CSS/setup.css">
     <script src="../JS/setupfront.js"></script>
-    
-    <style>
-        html,
-        body {
-            background-color: black;
-            margin: 0;
-            padding: 0;
-        }
 
-        .text {
-            margin: 0 60px;
-            flex: 2;
-            color: white;
-            margin-bottom: 80px;
-        }
-
-        .contactBox {
-            width: 100%;
-            background-color: rgb(44, 62, 80);
-            padding: 45px 0;
-        }
-
-        .contact {
-            color: white;
-            display: flex;
-            justify-content: space-around;
-            font-size: 25px;
-        }
-
-
-        h3 {
-            font-size: 30px;
-            color: white;
-            text-align: center;
-            margin-top: 0;
-        }
-
-
-        #contactA {
-            color: white;
-            text-decoration: none;
-            font-size: 25px;
-
-        }
-
-        #contactA:hover {
-            color: #38d1ff;
-            text-decoration: underline;
-        }
-    </style>
 </head>
 
 <body>
@@ -69,16 +20,9 @@
     <h1>註冊會員</h1>
     <form id="setupForm">
         <!-- 姓名 -->
-        <div id="formRow">
-            <div id="setupfirstnameGroup">
-                <label for="setupFirstname" class="firstnameText">名字</label>
-                <input type="text" id="setupFirstname" name="setupFirstname" required>
-            </div>
-
-            <div id="setuplastnameGroup">
-                <label for="setupLastname" class="lastnameText">姓氏</label>
-                <input type="text" id="setupLastname" name="setupLastname" required>
-            </div>
+        <div id="setupfirstnameGroup">
+            <label for="setupFirstname" class="firstnameText">姓名</label>
+            <input type="text" id="setupFirstname" name="setupFirstname" required>
         </div>
 
         <!-- 性別 -->
@@ -111,38 +55,6 @@
                     <!-- 年份迴圈 -->
                 </select>
             </div>
-        </div>
-        <div id="countryGroup">
-            <label for="countryTitle" class="countryTitle">國家/地區</label>
-            <select name="counTry" id="counTry">
-                <option value="">選擇國家/地區</option>
-                <option value="1">澳洲</option>
-                <option value="2">汶萊</option>
-                <option value="3">柬埔寨</option>
-                <option value="4">加拿大</option>
-                <option value="5">中國</option>
-                <option value="6">法國</option>
-                <option value="7">德國</option>
-                <option value="8">香港特別行政區</option>
-                <option value="9">印度</option>
-                <option value="10">印尼</option>
-                <option value="11">義大利</option>
-                <option value="12">日本</option>
-                <option value="13">澳門特別行政區</option>
-                <option value="14">馬來西亞</option>
-                <option value="15">墨西哥</option>
-                <option value="16">紐西蘭</option>
-                <option value="17">菲律賓</option>
-                <option value="18">新加坡</option>
-                <option value="19">南韓</option>
-                <option value="20">西班牙</option>
-                <option value="21">瑞典</option>
-                <option value="22">台灣</option>
-                <option value="23">泰國</option>
-                <option value="24">英國</option>
-                <option value="25">美國</option>
-                <option value="26">越南</option>
-            </select>
         </div>
         <!-- 手機號碼 -->
         <div id="phonenumGroup">

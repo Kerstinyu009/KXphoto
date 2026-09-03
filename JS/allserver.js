@@ -30,7 +30,7 @@ app.post('/setup', function (req, res) {
     const lastname = req.body.lastname;
     const setupemail = req.body.setupemail;
 
-    console.log('成功收到註冊請求，email為：', setupemail);
+    // console.log('成功收到註冊請求，email為：', setupemail);
 
     res.status(200).json({
         status: 'success',
