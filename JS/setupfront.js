@@ -39,7 +39,7 @@ $(document).ready(function () {
             // 成功執行
             success: function (res) {
                 alert("會員註冊成功");
-                // console.log("後端傳送成功", res);
+                console.log("後端傳送成功", setupData);
             },
 
             // 失敗執行
