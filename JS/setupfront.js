@@ -1,56 +1,74 @@
-// 監聽點擊事件
-$(document).ready(function () {
-    $("#setupBtn").on("click", function (event) {
-        //防止畫面跳轉
-        event.preventDefault();
-        //檢查密碼
-        const psw = $("#setuppsw").val();
-        const pswA = $("#setuppswA").val();
-        if (psw != pswA) {
-            alert("密碼不一致，請重新輸入");
-            return;
-        }
-        //打包資料
-        const setupData = {
-            // 姓名
-            firstname: $("#firstnameText").val(),
-            //性別
-            gender: $("#gendertitleGroup input:checked").val(),
-            //生日
-            birthdayM: $("#birthdayM").val(),
-            birthdayD: $("#birthdayD").val(),
-            birthdayY: $("#birthdayY").val(),
-            //手機號碼
-            phonenum: $("#phoneNum").val(),
-            //電子信箱
-            setupemail: $("#setupEmail").val(),
-            //密碼
-            setuppsw: $("#setuppsw").val(),
-            //確認密碼
-            setuppswA: $("#setuppswA").val()
-        }
-        // 給後端
-        $.ajax({
-            url: 'http://localhost:3000/setup',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(setupData),
-            
-            // 成功執行
-            success: function (res) {
-                alert("會員註冊成功");
-                // console.log("後端傳送成功", res);
-            },
+const bcrypt = require("bcrypt"); 
 
-            // 失敗執行
-            error: function(res){
-                alert("會員註冊失敗");
-                // console.log("後端傳送失敗", res);
-            }
+// 註冊 
+app.post("/setup", async function (request, response) {
+    const firstname = request.body.firstname;
+    const gender = request.body.gender;
+    const birthdayM = request.body.birthdayM;
+    const birthdayD = request.body.birthdayD;
+    const birthdayY = request.body.birthdayY;
+    const phonenum = request.body.phonenum;
+    const setupemail = request.body.setupemail;
+    const setuppsw = request.body.setuppsw;
 
+    // 基本必填欄位驗證
+    if (!setupemail || !setuppsw) {
+        return response.status(400).json({
+            status: "error",
+            message: "請填寫必要的帳號與密碼欄位！"
+        });
+    }
+
+    // 生日
+    let birthday = null;
+    if (birthdayY && birthdayM && birthdayD) {
+        birthday = `${birthdayY}-${String(birthdayM).padStart(2, '0')}-${String(birthdayD).padStart(2, '0')}`;
+    }
+
+    try {
+        const pool = await poolPromise;
+
+        //檢查帳號是否重複
+        const checkUser = await pool.request()
+            .input("SetupEmail", sql.NVarChar(100), setupemail)
+            .query("SELECT Id FROM Members WHERE SetupEmail = @SetupEmail");
+
+        if (checkUser.recordset.length > 0) {
+            return response.status(400).json({
+                status: "error",
+                message: "該電子信箱已被註冊！"
+            });
+        }
+
+        // 密碼加密 
+        const hashedPassword = await bcrypt.hash(setuppsw, 10);
+
+        // Members 資料表
+        await pool.request()
+            .input("Firstname", sql.NVarChar(50), firstname || null)
+            .input("Gender", sql.NVarChar(10), gender || null)
+            .input("Birthday", sql.Date, birthday)
+            .input("PhoneNum", sql.NVarChar(20), phonenum || null)
+            .input("SetupEmail", sql.NVarChar(100), setupemail)
+            .input("SetupPsw", sql.NVarChar(100), hashedPassword)
+            .query(`
+                INSERT INTO Members (Firstname, Gender, Birthday, PhoneNum, SetupEmail, SetupPsw)
+                VALUES (@Firstname, @Gender, @Birthday, @PhoneNum, @SetupEmail, @SetupPsw)
+            `);
+
+        console.log("會員註冊成功並已寫入資料庫:", setupemail);
+
+        return response.status(200).json({
+            status: "success",
+            message: "註冊成功！資料已寫入資料庫"
         });
 
+    } catch (error) {
+        console.error("註冊失敗:", error);
 
-
-    })
-})
+        return response.status(500).json({
+            status: "error",
+            message: "註冊失敗，內部伺服器錯誤。"
+        });
+    }
+});

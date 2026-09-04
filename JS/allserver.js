@@ -15,16 +15,16 @@ app.use(express.urlencoded({ extended: false }));
 // SQL Server 連線設定
 const dbConfig = {
     user: "sa",       
-    password: "P@ssw0rd",   // 你的 SQL Server 密碼
-    server: "localhost",         // 伺服器位址 (例如: localhost 或 127.0.0.1)
-    database: "KXphotoDB",    // 你的資料庫名稱
+    password: "P@ssw0rd",   
+    server: "localhost",       
+    database: "KXphotoDB",    
     options: {
-        encrypt: false,          // 本地開發通常設為 false，若為 Azure 需設為 true
-        trustServerCertificate: true // 本地開發測試設為 true
+        encrypt: false,         
+        trustServerCertificate: true 
     }
 };
 
-// 建立資料庫連線池並測試連線
+// 資料庫連線池
 const poolPromise = new sql.ConnectionPool(dbConfig)
     .connect()
     .then(pool => {
@@ -36,43 +36,127 @@ const poolPromise = new sql.ConnectionPool(dbConfig)
     });
 
 // 1. 註冊 API (/setup)
-app.post("/setup", function (request, response) {
-    var firstname = request.body.firstname;
-    var lastname = request.body.lastname;
-    var gender = request.body.gender;
-    var birthdayM = request.body.birthdayM;
-    var birthdayD = request.body.birthdayD;
-    var birthdayY = request.body.birthdayY;
-    var country = request.body.country;
-    var phonenum = request.body.phonenum;
-    var setupemail = request.body.setupemail;
-    var setuppsw = request.body.setuppsw;
-    var setuppswA = request.body.setuppswA;
+app.post("/setup", async function (request, response) {
+    const firstname = request.body.firstname;
+    const gender = request.body.gender;
+    const birthdayM = request.body.birthdayM;
+    const birthdayD = request.body.birthdayD;
+    const birthdayY = request.body.birthdayY;
+    const phonenum = request.body.phonenum;
+    const setupemail = request.body.setupemail;
+    const setuppsw = request.body.setuppsw;
 
-    // 查看後端是否接收到資料
-    // console.log("成功收到註冊請求，email為:", setupemail);
+    // 必填檢查
+    if (!setupemail || !setuppsw) {
+        return response.status(400).json({
+            status: "error",
+            message: "請填寫信箱與密碼！"
+        });
+    }
 
-    // 回傳結果給前端
-    response.status(200).json({
-        status: "success",
-        message: "後端已經收到資料"
-    });
+    // 組合生日格式 (YYYY-MM-DD)，使用 String 防範數字類型轉置錯誤
+    let birthday = null;
+    if (birthdayY && birthdayM && birthdayD) {
+        birthday = `${birthdayY}-${String(birthdayM).padStart(2, '0')}-${String(birthdayD).padStart(2, '0')}`;
+    }
+
+    try {
+        const pool = await poolPromise;
+
+        // 檢查信箱是否重複註冊
+        const checkEmail = await pool.request()
+            .input("SetupEmail", sql.NVarChar(100), setupemail)
+            .query("SELECT Id FROM Members WHERE SetupEmail = @SetupEmail");
+
+        if (checkEmail.recordset.length > 0) {
+            return response.status(400).json({
+                status: "error",
+                message: "此電子信箱已被註冊！"
+            });
+        }
+
+        // 寫入 Members 資料表
+        await pool.request()
+            .input("Firstname", sql.NVarChar(50), firstname || null)
+            .input("Gender", sql.NVarChar(10), gender || null)
+            .input("Birthday", sql.Date, birthday)
+            .input("PhoneNum", sql.NVarChar(20), phonenum || null)
+            .input("SetupEmail", sql.NVarChar(100), setupemail)
+            .input("SetupPsw", sql.NVarChar(100), setuppsw)
+            .query(`
+                INSERT INTO Members (Firstname, Gender, Birthday, PhoneNum, SetupEmail, SetupPsw)
+                VALUES (@Firstname, @Gender, @Birthday, @PhoneNum, @SetupEmail, @SetupPsw)
+            `);
+
+        console.log("會員註冊成功，已寫入資料庫:", setupemail);
+
+        return response.status(200).json({
+            status: "success",
+            message: "註冊成功！資料已順利寫入資料庫。"
+        });
+
+    } catch (error) {
+        console.error("註冊失敗:", error);
+        return response.status(500).json({
+            status: "error",
+            message: "伺服器內部錯誤，無法寫入資料。"
+        });
+    }
 });
 
 // 2. 登入 API (/login)
-app.post("/login", function (req, res) {
+app.post("/login", async function (req, res) {
     const email = req.body.memberEmail;
     const psw = req.body.memberPsw;
 
-    // 後端印數據，確認是否成功送達
-    console.log("OK", email);
-    console.log("OK", psw);
+    console.log("收到登入請求:", email);
 
-    // 回傳結果給前端
-    res.json({
-        status: "success",
-        message: "後端成功收到資料"
-    });
+    try {
+        const pool = await poolPromise;
+
+        // 向 Members 資料表查詢 SetupEmail 欄位
+        const result = await pool.request()
+            .input("email", sql.VarChar(100), email)
+            .query("SELECT * FROM Members WHERE SetupEmail = @email");
+
+        // 查無此帳號
+        if (result.recordset.length === 0) {
+            return res.status(400).json({
+                status: "error",
+                message: "電子信箱或密碼錯誤！"
+            });
+        }
+
+        const user = result.recordset[0];
+
+        // 比對資料庫欄位 SetupPsw
+        if (user.SetupPsw !== psw) {
+            return res.status(400).json({
+                status: "error",
+                message: "電子信箱或密碼錯誤！"
+            });
+        }
+
+        console.log("登入成功:", email);
+
+        // 回傳成功結果與用戶資料給前端
+        return res.json({
+            status: "success",
+            message: "登入成功！",
+            user: {
+                id: user.Id,
+                email: user.SetupEmail,
+                firstName: user.Firstname
+            }
+        });
+
+    } catch (error) {
+        console.error("登入查詢時發生錯誤:", error);
+        return res.status(500).json({
+            status: "error",
+            message: "內部錯誤，請稍後再試。"
+        });
+    }
 });
 
 // 啟動伺服器並監聽 Port 3000
