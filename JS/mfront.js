@@ -24,19 +24,19 @@ loginForm.addEventListener('submit', function (loginEvent) {
         .then(function (res) {
             return res.json();
         })
-        // 後端資料入
-        .then(function (data) {
-            // console.log('後端回傳結果', data);
+    // 後端資料寫入
+    .then(function (data) {
+        if (data.status === 'success') {
+            alert('會員登入成功');
 
-            if (data.status === 'success') {
-                alert('會員登入成功');
-
-                // 其他頁面使用
-                if (data.user) {
-                    localStorage.setItem('user', JSON.stringify(data.user));
+            // 會員資料
+            if (data.user) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+                if (data.user.firstName) {
+                    localStorage.setItem('userFirstName', data.user.firstName);
                 }
-
-                // 跳轉至首頁
+            }
+                // 登入成功，跳轉至首頁
                 window.location.href = '../index.html'; 
             } else {
                 // 如果登入失敗，顯示後端傳來的錯誤訊息

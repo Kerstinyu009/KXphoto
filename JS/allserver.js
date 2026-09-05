@@ -111,6 +111,7 @@ app.post("/setup", async function (request, response) {
 });
 
 // 登入 API (/login)
+// 純登入
 app.post("/login", async function (req, res) {
     const email = req.body.memberEmail;
     const psw = req.body.memberPsw;
@@ -156,7 +157,7 @@ app.post("/login", async function (req, res) {
         console.error("登入查詢時發生錯誤:", error);
         return res.status(500).json({
             status: "error",
-            message: "內部錯誤，請稍後再試。"
+            message: "伺服器錯誤，請稍後再試。"
         });
     }
 });

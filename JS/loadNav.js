@@ -17,8 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(data => {
                 placeholder.innerHTML = data;
-
-                // 如果是子頁面，自動把選單裡的連結補上 ../ 避免跳轉 404
+            
                 if (isInPagesFolder) {
                     const links = placeholder.querySelectorAll('a');
                     links.forEach(link => {
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     });
 
-                    // 自動修正 Logo 圖片路徑
                     const logoImg = placeholder.querySelector('.navlogo');
                     if (logoImg) {
                         const src = logoImg.getAttribute('src');
@@ -37,6 +35,27 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
                 }
+
+                // 更新會員名字
+                const savedName = localStorage.getItem("userFirstName");
+                const memberLink = placeholder.querySelector('a[href*="members.html"]');
+
+if (savedName && memberLink) {
+        // 替換文字為使用者名字
+        memberLink.textContent = `你好，${savedName}`;
+        
+        // 移除 href 屬性，阻止點擊進入登入頁面
+        memberLink.removeAttribute('href');
+        
+        // 修改 CSS 樣式，使其看起來像一般文字而不是超連結
+        memberLink.style.cursor = 'default';
+        memberLink.style.textDecoration = 'none';
+        
+        // 阻止預設點擊行為
+        memberLink.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
+    }
             })
             .catch(error => console.error('發生錯誤:', error));
     }
