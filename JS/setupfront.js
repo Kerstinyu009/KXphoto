@@ -38,7 +38,7 @@ document.getElementById("setupForm").addEventListener("submit", async function (
             alert("註冊失敗：" + result.message);
         }
     } catch (error) {
-        console.error("發送請求失敗:", error);
+        // console.error("發送請求失敗:", error);
         alert("無法連線到伺服器！");
     }
 });
