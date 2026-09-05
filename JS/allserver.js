@@ -1,10 +1,10 @@
 // 引入工具
 const express = require("express");
 const cors = require("cors");
-const sql = require("mssql"); 
+const sql = require("mssql");
 const app = express();
-const port = 3000;
-
+const bcrypt = require("bcrypt");
+const port = process.env.PORT || 3000;
 // 跨域設定
 app.use(cors());
 
@@ -14,17 +14,17 @@ app.use(express.urlencoded({ extended: false }));
 
 // SQL Server 連線設定
 const dbConfig = {
-    user: "sa",       
-    password: "P@ssw0rd",   
-    server: "localhost",       
-    database: "KXphotoDB",    
+    user: "sa",
+    password: "P@ssw0rd",
+    server: "localhost",
+    database: "KXphotoDB",
     options: {
-        encrypt: false,         
-        trustServerCertificate: true 
+        encrypt: false,
+        trustServerCertificate: true
     }
 };
 
-// 資料庫連線池
+// 資料庫連線
 const poolPromise = new sql.ConnectionPool(dbConfig)
     .connect()
     .then(pool => {
@@ -35,13 +35,14 @@ const poolPromise = new sql.ConnectionPool(dbConfig)
         console.error("SQL Server 資料庫連線失敗:", err);
     });
 
-// 1. 註冊 API (/setup)
+// 註冊 API (/setup)
 app.post("/setup", async function (request, response) {
     const firstname = request.body.firstname;
     const gender = request.body.gender;
     const birthdayM = request.body.birthdayM;
     const birthdayD = request.body.birthdayD;
     const birthdayY = request.body.birthdayY;
+    const phoneCountry = request.body.phoneCountry;
     const phonenum = request.body.phonenum;
     const setupemail = request.body.setupemail;
     const setuppsw = request.body.setuppsw;
@@ -54,10 +55,13 @@ app.post("/setup", async function (request, response) {
         });
     }
 
-    // 組合生日格式 (YYYY-MM-DD)，使用 String 防範數字類型轉置錯誤
+    // 生日組合 (YYYY-MM-DD)，若不齊全則給 null
     let birthday = null;
     if (birthdayY && birthdayM && birthdayD) {
-        birthday = `${birthdayY}-${String(birthdayM).padStart(2, '0')}-${String(birthdayD).padStart(2, '0')}`;
+        const formattedDate = `${birthdayY}-${String(birthdayM).padStart(2, '0')}-${String(birthdayD).padStart(2, '0')}`;
+        if (formattedDate.length === 10) {
+            birthday = formattedDate;
+        }
     }
 
     try {
@@ -75,17 +79,19 @@ app.post("/setup", async function (request, response) {
             });
         }
 
-        // 寫入 Members 資料表
+        // 寫入 Members 資料表 (對照資料表結構與型態)
         await pool.request()
-            .input("Firstname", sql.NVarChar(50), firstname || null)
-            .input("Gender", sql.NVarChar(10), gender || null)
-            .input("Birthday", sql.Date, birthday)
-            .input("PhoneNum", sql.NVarChar(20), phonenum || null)
-            .input("SetupEmail", sql.NVarChar(100), setupemail)
-            .input("SetupPsw", sql.NVarChar(100), setuppsw)
+            // 不允許 Null 的欄位 (Firstname, PhoneCountry, PhoneNum)，若沒填給予預設字串，避免 SQL 500 報錯
+            .input("Firstname", sql.NVarChar(50), firstname || "")                    
+            .input("Gender", sql.NVarChar(10), gender || null)                         // 允許 Null
+            .input("Birthday", sql.Date, birthday)                                     // 允許 Null
+            .input("PhoneCountry", sql.NVarChar(10), phoneCountry || "+886")           // 不允許 Null (新增)
+            .input("PhoneNum", sql.NVarChar(30), phonenum || "")                      // 不允許 Null (修正為 30)
+            .input("SetupEmail", sql.NVarChar(100), setupemail)                        // 不允許 Null
+            .input("SetupPsw", sql.NVarChar(255), setuppsw)                            // 不允許 Null (修正為 255)
             .query(`
-                INSERT INTO Members (Firstname, Gender, Birthday, PhoneNum, SetupEmail, SetupPsw)
-                VALUES (@Firstname, @Gender, @Birthday, @PhoneNum, @SetupEmail, @SetupPsw)
+                INSERT INTO Members (Firstname, Gender, Birthday, PhoneCountry, PhoneNum, SetupEmail, SetupPsw)
+                VALUES (@Firstname, @Gender, @Birthday, @PhoneCountry, @PhoneNum, @SetupEmail, @SetupPsw)
             `);
 
         console.log("會員註冊成功，已寫入資料庫:", setupemail);
@@ -96,7 +102,7 @@ app.post("/setup", async function (request, response) {
         });
 
     } catch (error) {
-        console.error("註冊失敗:", error);
+        console.error("【註冊失敗詳細錯誤】:", error);
         return response.status(500).json({
             status: "error",
             message: "伺服器內部錯誤，無法寫入資料。"
@@ -104,7 +110,7 @@ app.post("/setup", async function (request, response) {
     }
 });
 
-// 2. 登入 API (/login)
+// 登入 API (/login)
 app.post("/login", async function (req, res) {
     const email = req.body.memberEmail;
     const psw = req.body.memberPsw;
@@ -114,12 +120,10 @@ app.post("/login", async function (req, res) {
     try {
         const pool = await poolPromise;
 
-        // 向 Members 資料表查詢 SetupEmail 欄位
         const result = await pool.request()
-            .input("email", sql.VarChar(100), email)
+            .input("email", sql.NVarChar(100), email)
             .query("SELECT * FROM Members WHERE SetupEmail = @email");
 
-        // 查無此帳號
         if (result.recordset.length === 0) {
             return res.status(400).json({
                 status: "error",
@@ -129,7 +133,6 @@ app.post("/login", async function (req, res) {
 
         const user = result.recordset[0];
 
-        // 比對資料庫欄位 SetupPsw
         if (user.SetupPsw !== psw) {
             return res.status(400).json({
                 status: "error",
@@ -139,7 +142,6 @@ app.post("/login", async function (req, res) {
 
         console.log("登入成功:", email);
 
-        // 回傳成功結果與用戶資料給前端
         return res.json({
             status: "success",
             message: "登入成功！",
