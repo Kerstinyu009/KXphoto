@@ -41,6 +41,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 const memberLink = placeholder.querySelector('a[href*="members.html"]');
 
                 if (savedName && memberLink) {
+
+                    // 取得父節點 <li>
+                    const parentItem = memberLink.parentElement;
+
+                    // nav排版
+                    if (parentItem) {
+                        parentItem.style.display = 'inline-flex';
+                        parentItem.style.alignItems = 'center';
+                    }
+
                     // 替換文字為使用者名字
                     memberLink.textContent = `你好，${savedName}`;
 
@@ -51,12 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     memberLink.style.cursor = 'default';
                     memberLink.style.textDecoration = 'none';
 
+                    // 動態建一個獨立的「登出」超連結
+                    const logoutBtn = document.createElement('a');
+                    logoutBtn.textContent = '登出';
+                    logoutBtn.href = 'javascript:void(0)';
+                    logoutBtn.style.color = '#FFF';
+                    logoutBtn.style.cursor = 'pointer';
+
                     // 登出
-                    memberLink.addEventListener('click', (e) => {
+                    logoutBtn.addEventListener('click', (e) => {
                         e.preventDefault();
                         // 登出訊息
-                        const isLogout = confirm(`您目前已登入（${savedName}）。是否要登出？`);
-                        if (isLogout) {
+                        if (confirm(`您目前已登入（${savedName}）。是否要登出？`)) {
                             // 清除登入的會員資料
                             localStorage.removeItem("userFirstName");
                             localStorage.removeItem("user");
@@ -67,6 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             window.location.reload();
                         }
                     });
+                    // 將登出按鈕放到名字旁邊
+                    if (parentItem) {
+                        parentItem.appendChild(logoutBtn);
+                    }
                 }
             })
             .catch(error => console.error('發生錯誤:', error));
