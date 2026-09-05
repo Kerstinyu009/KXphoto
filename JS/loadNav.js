@@ -47,7 +47,7 @@ if (savedName && memberLink) {
         // 移除 href 屬性，阻止點擊進入登入頁面
         memberLink.removeAttribute('href');
         
-        // 修改 CSS 樣式，使其看起來像一般文字而不是超連結
+        // 修改 CSS 樣式，去除超連結
         memberLink.style.cursor = 'default';
         memberLink.style.textDecoration = 'none';
         
